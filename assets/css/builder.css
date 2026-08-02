@@ -1,0 +1,422 @@
+/* =====================================================================
+   CONVERGENCE — CONSTRUCTOR, PARTIDA Y LISTAS
+   El CSS del piloto reescrito con el lenguaje del hero.
+   Los nombres de clase son los que emite builder.js: no los renombres
+   sin tocar también el JS.
+   Depende de tokens.css y site.css.
+   ===================================================================== */
+
+/* =====================================================================
+   1. BARRA DE LISTA
+   Presente en las tres páginas: es lo que hace que el nombre, el límite
+   y el total viajen contigo de una a otra.
+   ===================================================================== */
+.bld-bar{
+  background:var(--panel);
+  border:1px solid var(--linea-oro);
+  border-radius:var(--r);
+  padding:14px 18px;
+  display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+  margin-bottom:22px;
+}
+.bld-bar .campo{display:flex;flex-direction:column;gap:5px;}
+.bld-bar label{
+  font-size:.62rem;letter-spacing:var(--ls-lb);text-transform:uppercase;
+  color:var(--oro);font-weight:500;
+}
+.bld-bar .grow{flex:1;min-width:0;}
+
+.bld-tot{text-align:right;line-height:1.15;}
+.bld-tot .big{font-family:var(--f-titulo);font-size:1.75rem;font-weight:700;color:var(--oro);}
+.bld-tot .big .sep{color:var(--txt-tenue);font-size:1.1rem;margin:0 2px;}
+.bld-tot .sub{
+  font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--txt-dim);
+}
+#ptNow.over{color:var(--error-txt);}
+#ptNow.ok{color:var(--ok);}
+
+/* Banda de facción: el color lo pone renderCabecera() en --fac */
+.bld-band{height:3px;background:var(--fac);border-radius:2px 2px 0 0;}
+
+/* =====================================================================
+   2. CONTROLES DE FORMULARIO
+   ===================================================================== */
+input,select,textarea,button{font-family:var(--f-texto);font-size:.92rem;color:var(--txt);}
+input,select,textarea{
+  background:rgba(10,9,8,.55);
+  border:1px solid var(--linea-hueso);
+  border-radius:var(--r);
+  padding:8px 10px;
+}
+input:focus,select:focus,textarea:focus{border-color:var(--oro);}
+select{cursor:pointer;}
+select option{background:var(--panel-solido);color:var(--txt);}
+button{background:none;border:none;cursor:pointer;}
+
+/* Botones del constructor */
+.btn{
+  border:1px solid var(--linea-hueso-fuerte);
+  border-radius:var(--r);
+  padding:9px 14px;
+  font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;font-weight:500;
+  background:transparent;color:var(--txt);
+  transition:border-color 180ms ease,color 180ms ease,background 180ms ease;
+}
+.btn:hover{border-color:var(--oro);color:var(--oro);}
+.btn.pri{
+  background:var(--oro);color:var(--negro);border-color:var(--oro);font-weight:600;
+}
+.btn.pri:hover{background:#d9b338;color:var(--negro);}
+.btn.dan{color:var(--error-txt);border-color:rgba(178,59,59,.5);}
+.btn.dan:hover{border-color:var(--error);color:var(--error-txt);}
+.btn.sm{padding:5px 9px;font-size:.66rem;}
+.x{
+  color:var(--txt-dim);font-size:1rem;padding:0 5px;line-height:1;background:none;border:none;
+}
+.x:hover{color:var(--error-txt);}
+
+/* =====================================================================
+   3. LAYOUT
+   ===================================================================== */
+.cols{display:grid;grid-template-columns:minmax(0,352px) minmax(0,1fr);gap:22px;}
+.row{display:flex;gap:9px;align-items:center;}
+.wrap-f{flex-wrap:wrap;}
+.row.wrap{flex-wrap:wrap;}
+.grow{flex:1;}
+.muted{color:var(--txt-dim);}
+.small{font-size:.83rem;}
+.tiny{font-size:.74rem;}
+.hidden{display:none !important;}
+.fuera{color:var(--error-txt);font-weight:600;}
+
+/* Panel: la unidad de superficie de todo el constructor */
+.panel{
+  background:var(--panel);
+  border:1px solid var(--linea-oro);
+  border-radius:var(--r);
+  margin-bottom:20px;
+}
+.panel>h2,.panel>h3{
+  padding:14px 18px;
+  font-family:var(--f-titulo);
+  font-size:.9rem;font-weight:600;
+  letter-spacing:var(--ls-titulo);text-transform:uppercase;
+  color:var(--hueso);
+  border-bottom:1px solid var(--linea-oro);
+}
+.pbody{padding:18px;}
+
+/* =====================================================================
+   4. CATÁLOGO
+   ===================================================================== */
+.cathead{
+  font-size:.66rem;letter-spacing:var(--ls-lb);text-transform:uppercase;
+  color:var(--oro);
+  margin:20px 0 10px;padding-bottom:6px;
+  border-bottom:1px solid var(--linea-oro);
+}
+.cathead:first-child{margin-top:0;}
+
+.cat-item{
+  display:flex;align-items:center;gap:11px;
+  padding:10px 12px;margin-bottom:7px;
+  border:1px solid var(--linea-hueso);
+  border-radius:var(--r);
+  background:rgba(10,9,8,.4);
+  cursor:pointer;
+  transition:border-color 160ms ease,background 160ms ease;
+}
+.cat-item:hover{border-color:var(--oro);background:rgba(201,162,39,.07);}
+.cat-item .nm{flex:1;font-weight:500;font-size:.92rem;color:var(--hueso);}
+.cat-item .tg{
+  font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--txt-dim);font-weight:400;margin-top:2px;
+}
+/* El coste: oro y Cinzel. Es el número que más se mira. */
+.cat-item .pt,.unit-head .pt,.wb-head .pt{
+  font-family:var(--f-titulo);font-weight:700;color:var(--oro);font-size:1rem;
+}
+
+.thumb{
+  width:46px;height:46px;border-radius:var(--r);object-fit:cover;
+  border:1px solid var(--linea-hueso);background:#000;flex-shrink:0;
+}
+.thumb.sm{width:34px;height:34px;}
+
+.pfigure{position:relative;}
+.portrait{
+  width:100%;max-width:240px;aspect-ratio:1;object-fit:cover;display:block;
+  margin:0 auto 10px;
+  border:1px solid var(--linea-hueso);
+  border-top:2px solid var(--fac);
+  border-radius:var(--r);background:#000;
+}
+.pcap{
+  text-align:center;font-size:.64rem;letter-spacing:var(--ls-lb);
+  text-transform:uppercase;color:var(--txt-dim);margin:-4px 0 12px;
+}
+
+/* =====================================================================
+   5. WARBANDS
+   ===================================================================== */
+.wb{
+  border:1px solid var(--linea-oro);
+  border-left:2px solid var(--fac);
+  border-radius:var(--r);
+  background:var(--panel);
+  margin-bottom:18px;overflow:hidden;
+}
+.wb-head{
+  display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+  padding:13px 16px;
+  background:rgba(201,162,39,.05);
+  border-bottom:1px solid var(--linea-oro);
+}
+.wb-head .t{
+  font-family:var(--f-titulo);font-weight:600;font-size:1.02rem;
+  letter-spacing:.03em;color:var(--hueso);
+}
+.tier{
+  font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;
+  color:var(--negro);background:var(--oro);
+  padding:3px 7px;border-radius:var(--r);
+}
+.genbadge{
+  font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;
+  border:1px solid var(--oro);color:var(--oro);
+  padding:2px 7px;border-radius:var(--r);
+}
+.wb-body{padding:16px;}
+
+.unit{
+  border:1px solid var(--linea-hueso);
+  border-radius:var(--r);
+  background:rgba(10,9,8,.34);
+  margin-bottom:10px;
+}
+.unit-head{display:flex;align-items:center;gap:10px;padding:10px 12px;cursor:pointer;}
+.unit-head:hover{background:rgba(201,162,39,.05);}
+.unit-head .nm{flex:1;font-weight:500;font-size:.92rem;color:var(--hueso);}
+.chev{color:var(--oro);font-size:.7rem;width:12px;}
+.unit-detail{border-top:1px solid var(--linea-hueso);padding:14px;display:none;}
+.unit.open .unit-detail{display:block;}
+
+/* =====================================================================
+   6. TABLA DE ESTADÍSTICAS
+   Sin bordes de caja: sólo hairlines entre filas. Cabecera en oro.
+   ===================================================================== */
+table.st{
+  width:100%;border-collapse:collapse;
+  font-family:var(--f-texto);font-size:.84rem;
+  margin:4px 0 14px;
+}
+table.st th{
+  color:var(--oro);
+  font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;font-weight:500;
+  padding:0 4px 7px;
+  border:none;border-bottom:1px solid var(--linea-oro);
+  text-align:center;
+}
+table.st td{
+  text-align:center;padding:9px 4px;
+  border:none;border-bottom:1px solid var(--linea-hueso);
+  background:none;color:var(--txt);font-variant-numeric:tabular-nums;
+}
+table.st tr:last-child td{border-bottom:none;}
+/* Valor alterado por una opción (escudo, arco…) */
+table.st td.mod{color:var(--oro);font-weight:600;}
+
+.shields{display:flex;gap:8px;margin-bottom:14px;}
+.shield{
+  flex:1;text-align:center;padding:9px 4px;
+  border:1px solid var(--linea-hueso);border-radius:var(--r);
+  background:rgba(10,9,8,.4);
+}
+.shield .v{font-family:var(--f-titulo);font-size:1.3rem;font-weight:700;color:var(--oro);line-height:1.1;}
+.shield .l{
+  font-size:.58rem;letter-spacing:.12em;color:var(--txt-dim);text-transform:uppercase;margin-top:3px;
+}
+
+/* =====================================================================
+   7. BLOQUES DE REGLAS
+   ===================================================================== */
+.blk{margin-bottom:14px;}
+.blk .lb{
+  font-size:.62rem;letter-spacing:var(--ls-lb);text-transform:uppercase;
+  color:var(--oro);margin-bottom:6px;font-weight:500;
+}
+.blk p{margin:0 0 5px;color:var(--txt-suave);font-size:.87rem;}
+.rule{font-size:.87rem;margin-bottom:7px;color:var(--txt-suave);line-height:1.5;}
+.rule b{color:var(--hueso);font-weight:600;}
+.flavor{
+  font-style:italic;color:var(--txt-dim);font-size:.87rem;line-height:1.55;
+  border-left:1px solid var(--fac);padding-left:12px;margin-top:12px;
+}
+
+/* =====================================================================
+   8. OPCIONES Y CANTIDAD
+   ===================================================================== */
+.opt{
+  display:flex;align-items:center;gap:10px;
+  padding:8px 10px;margin-bottom:6px;
+  border:1px solid var(--linea-hueso);border-radius:var(--r);
+  background:rgba(10,9,8,.3);font-size:.87rem;
+}
+.opt.on{border-color:var(--oro);background:rgba(201,162,39,.08);}
+.opt input{margin:0;accent-color:var(--oro);width:auto;padding:0;}
+.opt label{flex:1;cursor:pointer;color:var(--txt-suave);}
+.opt .od{display:block;font-size:.74rem;color:var(--txt-dim);margin-top:2px;}
+.opt .oc{font-family:var(--f-titulo);font-weight:700;color:var(--oro);font-size:.85rem;}
+
+.qty{
+  display:flex;align-items:center;
+  border:1px solid var(--linea-hueso);border-radius:var(--r);overflow:hidden;
+}
+.qty button{
+  width:32px;height:32px;background:rgba(255,255,255,.05);
+  font-size:1rem;font-weight:600;color:var(--oro);
+}
+.qty button:hover{background:rgba(201,162,39,.16);}
+.qty button:active{background:var(--oro);color:var(--negro);}
+.qty .n{
+  width:40px;text-align:center;font-family:var(--f-titulo);font-weight:700;
+  font-variant-numeric:tabular-nums;
+}
+
+/* =====================================================================
+   9. VALIDACIÓN
+   ===================================================================== */
+.val{
+  font-size:.85rem;line-height:1.5;
+  padding:10px 13px;margin-bottom:7px;
+  border-left:2px solid;border-radius:0 var(--r) var(--r) 0;
+  color:var(--txt-suave);
+}
+.val b{color:var(--hueso);}
+.val.err{background:rgba(178,59,59,.14);border-color:var(--error);}
+.val.warn{background:rgba(201,162,39,.10);border-color:var(--oro);}
+.val.good{background:rgba(92,138,74,.14);border-color:var(--ok);}
+
+/* =====================================================================
+   10. MODO PARTIDA
+   ===================================================================== */
+.breakbar{
+  height:26px;border:1px solid var(--linea-hueso);border-radius:var(--r);
+  background:rgba(10,9,8,.6);position:relative;overflow:hidden;margin:8px 0 12px;
+}
+.breakfill{height:100%;background:linear-gradient(90deg,#4a7239,#5C8A4A);transition:width .3s ease;}
+.breakfill.brk{background:linear-gradient(90deg,#6d1616,#8b1a1a);}
+.breakmark{position:absolute;top:0;bottom:0;width:1px;background:var(--oro);left:50%;}
+.breaktxt{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  font-family:var(--f-titulo);font-size:.8rem;font-weight:700;letter-spacing:.04em;
+  color:var(--hueso);text-shadow:0 1px 3px rgba(0,0,0,.9);
+}
+
+.pip{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:28px;height:28px;margin:2px;
+  border:1px solid var(--linea-hueso);border-radius:var(--r);
+  background:rgba(10,9,8,.5);
+  font-size:.78rem;color:var(--oro);
+  cursor:pointer;user-select:none;
+  transition:border-color 140ms ease,background 140ms ease;
+}
+.pip:hover{border-color:var(--oro);}
+.pip.spent{background:rgba(60,20,20,.5);border-color:rgba(178,59,59,.4);color:var(--txt-tenue);}
+.pip.wound{background:rgba(60,20,20,.6);border-color:var(--error);color:var(--error-txt);}
+
+.res{display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap;}
+.res .lb{
+  width:80px;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--oro);
+}
+.tropa-linea{border-top:1px solid var(--linea-hueso);padding-top:10px;margin-top:10px;}
+.dead{opacity:.42;}
+.dead .nm{text-decoration:line-through;}
+
+.gcard{
+  border:1px solid var(--linea-oro);
+  border-left:2px solid var(--fac);
+  border-radius:var(--r);
+  background:var(--panel);
+  padding:16px 18px;margin-bottom:16px;
+}
+.ghead{
+  display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+  padding-bottom:12px;margin-bottom:14px;
+  border-bottom:1px solid var(--linea-oro);
+}
+.ghead .gname{
+  font-family:var(--f-titulo);font-weight:600;font-size:1.15rem;letter-spacing:.03em;color:var(--hueso);
+}
+.ghead .gsub{
+  font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--txt-dim);
+}
+.gmain{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px;align-items:start;}
+.gpic{width:clamp(130px,30vw,200px);}
+.gpic img{
+  width:100%;aspect-ratio:1;object-fit:cover;display:block;
+  border:1px solid var(--linea-hueso);border-top:2px solid var(--fac);
+  border-radius:var(--r);background:#000;
+}
+.gres{min-width:0;}
+.gres .res{display:block;margin-bottom:12px;}
+.gres .res .lb{width:100%;margin-bottom:4px;display:block;}
+.gres .pip{width:31px;height:31px;font-size:.82rem;}
+
+/* =====================================================================
+   11. LISTAS GUARDADAS
+   ===================================================================== */
+.saved{
+  display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+  padding:12px 14px;margin-bottom:8px;
+  border:1px solid var(--linea-hueso);border-radius:var(--r);
+  background:rgba(10,9,8,.38);
+}
+.saved b{font-family:var(--f-titulo);font-weight:600;font-size:1rem;color:var(--hueso);}
+.saved:hover{border-color:var(--linea-oro);}
+
+#txtCode{
+  width:100%;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.76rem;
+  resize:vertical;
+}
+
+/* =====================================================================
+   12. RESPONSIVE
+   ===================================================================== */
+@media (max-width:1023px){
+  .cols{grid-template-columns:1fr;}
+}
+@media (max-width:560px){
+  .bld-bar{gap:11px;}
+  .bld-bar .campo{flex:1;min-width:120px;}
+  .gmain{grid-template-columns:1fr;}
+  .gpic{width:150px;}
+  .gres .pip{width:27px;height:27px;}
+  .pbody{padding:14px;}
+  .wb-body{padding:12px;}
+}
+
+/* =====================================================================
+   13. IMPRESIÓN
+   La hoja imprimible sale en negro sobre blanco: es para llevarla a la
+   mesa, no para lucir la paleta.
+   ===================================================================== */
+#print{display:none;}
+@media print{
+  body{background:#fff;color:#000;}
+  .page-bg,.cv-nav,.cv-nav-scrim-top,.cv-nav-scrim-right,.site-footer,
+  .page-head,.bld-bar,.panel,.noprint{display:none !important;}
+  .page{padding-top:0;}
+  #print{display:block !important;padding:0;font-size:11pt;color:#000;}
+  #print h1{font-size:19pt;border-bottom:2px solid #000;margin-bottom:2mm;font-family:Georgia,serif;}
+  #print h2{font-size:13pt;margin:4mm 0 1mm;border-bottom:1px solid #666;font-family:Georgia,serif;}
+  #print table{width:100%;border-collapse:collapse;font-size:9pt;margin:1mm 0 2mm;}
+  #print th,#print td{border:1px solid #999;padding:1mm 1.5mm;text-align:center;}
+  #print th{background:#eee;}
+  #print .u{margin:0 0 2.5mm;page-break-inside:avoid;}
+  #print .un{font-weight:bold;font-size:11pt;}
+  #print .ul{font-size:9pt;color:#333;}
+  #print .wbp{page-break-inside:avoid;margin-bottom:4mm;}
+  @page{margin:1cm;}
+}

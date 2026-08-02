@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Campa&ntilde;a &mdash; CONVERGENCE</title>
+<meta name="description" content="El modo campa&ntilde;a de Convergence: en qu&eacute; consiste y en qu&eacute; estado est&aacute; su desarrollo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/site.css">
+  <link rel="stylesheet" href="assets/css/builder.css">
+  <link rel="stylesheet" href="assets/css/paginas.css">
+</head>
+<body>
+
+  <a class="skip" href="#main">Saltar al contenido</a>
+
+  <div class="cv-nav-scrim-top" aria-hidden="true"></div>
+  <div class="cv-nav-scrim-right" aria-hidden="true"></div>
+
+  <nav class="cv-nav is-fixed" id="cv-nav" aria-label="Principal">
+    <div class="cv-nav-groups">
+      <div class="cv-nav-left">
+        <a href="facciones.html" class="cv-navlink">Facciones</a>
+        <a href="campana.html" class="cv-navlink">Campa&ntilde;a</a>
+        <a href="perfiles.html" class="cv-navlink">Perfiles y reglas</a>
+      </div>
+
+      <div class="cv-nav-right">
+        <a href="constructor.html" class="cv-navlink">Constructor</a>
+        <a href="partida.html" class="cv-navlink">Partida</a>
+        <a href="listas.html" class="cv-navlink">Listas</a>
+      </div>
+
+      <button class="cv-hamburger cv-hamburger-right" id="cv-hamburger-right"
+              aria-label="Herramientas" aria-expanded="false" aria-controls="cv-menu-right">
+        <span></span><span></span><span></span>
+      </button>
+
+      <button class="cv-hamburger cv-hamburger-main" id="cv-hamburger-main"
+              aria-label="Men&uacute;" aria-expanded="false" aria-controls="cv-menu-main">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="cv-menu cv-menu-right" id="cv-menu-right">
+    <a href="constructor.html">Constructor</a>
+    <a href="partida.html">Partida</a>
+    <a href="listas.html">Listas</a>
+  </div>
+
+  <div class="cv-menu cv-menu-main" id="cv-menu-main">
+    <a href="index.html">Inicio</a>
+    <a href="facciones.html">Facciones</a>
+    <a href="campana.html">Campa&ntilde;a</a>
+    <a href="perfiles.html">Perfiles y reglas</a>
+    <div class="cv-menu-divider" aria-hidden="true"></div>
+    <a href="constructor.html">Constructor</a>
+    <a href="partida.html">Partida</a>
+    <a href="listas.html">Listas</a>
+  </div>
+
+  <div class="page-bg bg-partida" aria-hidden="true"></div>
+
+  <div class="page">
+    <main id="main">
+      <div class="wrap">
+
+        <div class="page-head">
+          <div class="kicker"><i></i><span>Modo de juego</span></div>
+          <h1>Campa&ntilde;a</h1>
+          <p class="lead">Encadenar partidas en lugar de jugarlas sueltas: que lo que pas&oacute;
+            en la anterior importe en la siguiente.</p>
+        </div>
+
+        <div class="aviso">
+          <span class="aviso-lb">En desarrollo</span>
+          <p>El modo campa&ntilde;a todav&iacute;a no tiene reglas escritas en el proyecto. Lo que
+            hay debajo es el marco de lo que se est&aacute; pensando, no reglas jugables. Cuando
+            existan, se publican ac&aacute; y se enlazan desde el constructor.</p>
+        </div>
+
+        <section class="bloque">
+          <h2>La idea</h2>
+          <p>Una campa&ntilde;a es una serie de partidas entre los mismos ej&eacute;rcitos, donde
+            el resultado de cada una deja marca en la siguiente. En vez de rearmar la lista desde
+            cero cada vez, arrancás de la que tra&iacute;as y la vas modificando.</p>
+        </section>
+
+        <section class="bloque">
+          <h2>Qu&eacute; se est&aacute; considerando</h2>
+          <ul class="lista-marco">
+            <li><b>Continuidad del ej&eacute;rcito.</b> La misma lista base a lo largo de la
+              campa&ntilde;a, con un l&iacute;mite de puntos que puede crecer entre partidas.</li>
+            <li><b>Consecuencias de las bajas.</b> Que un h&eacute;roe que cae no est&eacute;
+              simplemente de vuelta a estrenar en la siguiente partida.</li>
+            <li><b>Progresi&oacute;n de h&eacute;roes.</b> Que sobrevivir y ganar deje algo:
+              alguna mejora acotada, no una bola de nieve.</li>
+            <li><b>Encadenado de escenarios.</b> Que quien gana elija o condicione el escenario
+              siguiente.</li>
+          </ul>
+          <p class="nota">Ninguno de estos puntos est&aacute; cerrado. No los uses como reglas.</p>
+        </section>
+
+        <section class="bloque">
+          <h2>Mientras tanto</h2>
+          <p>Para partidas sueltas ya est&aacute; todo lo necesario: arm&aacute; la lista en el
+            <a href="constructor.html">constructor</a>, guardala en
+            <a href="listas.html">listas</a> y us&aacute; el
+            <a href="partida.html">seguimiento de partida</a> en la mesa. Guardar varias
+            versiones de la misma lista es, por ahora, la forma m&aacute;s pr&aacute;ctica de
+            llevar una campa&ntilde;a a mano.</p>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <span class="marca">Convergence</span>
+          <p>Wargame de miniaturas por turnos. Ej&eacute;rcitos de mundos que nunca
+             debieron cruzarse, enfrentados sobre el mismo campo.</p>
+        </div>
+        <div class="foot-col">
+          <h4>El juego</h4>
+          <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="facciones.html">Facciones</a></li>
+            <li><a href="campana.html">Campa&ntilde;a</a></li>
+            <li><a href="perfiles.html">Perfiles y reglas</a></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h4>Herramientas</h4>
+          <ul>
+            <li><a href="constructor.html">Constructor de ej&eacute;rcitos</a></li>
+            <li><a href="partida.html">Seguimiento de partida</a></li>
+            <li><a href="listas.html">Listas guardadas</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-legal">
+        <p>Proyecto de fans sin &aacute;nimo de lucro. No est&aacute; afiliado ni respaldado por
+           Games Workshop ni por Middle-earth Enterprises. Las reglas de referencia pertenecen
+           a sus respectivos propietarios; este sitio s&oacute;lo re&uacute;ne material propio y
+           herramientas de apoyo para jugar en mesa.</p>
+        <p>Contacto: <a href="mailto:convergence@ejemplo.org">convergence@ejemplo.org</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/nav.js"></script>
+</body>
+</html>

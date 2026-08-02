@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Facciones &mdash; CONVERGENCE</title>
+<meta name="description" content="Las facciones de Convergence: Casa Bolton, La Horda, Gondor, Isengard, N&uacute;menor y el Ej&eacute;rcito de los Muertos jugables; Lannister en preparaci&oacute;n.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/site.css">
+  <link rel="stylesheet" href="assets/css/builder.css">
+  <link rel="stylesheet" href="assets/css/paginas.css">
+</head>
+<body>
+
+  <a class="skip" href="#main">Saltar al contenido</a>
+
+  <div class="cv-nav-scrim-top" aria-hidden="true"></div>
+  <div class="cv-nav-scrim-right" aria-hidden="true"></div>
+
+  <nav class="cv-nav is-fixed" id="cv-nav" aria-label="Principal">
+    <div class="cv-nav-groups">
+      <div class="cv-nav-left">
+        <a href="facciones.html" class="cv-navlink">Facciones</a>
+        <a href="campana.html" class="cv-navlink">Campa&ntilde;a</a>
+        <a href="perfiles.html" class="cv-navlink">Perfiles y reglas</a>
+      </div>
+
+      <div class="cv-nav-right">
+        <a href="constructor.html" class="cv-navlink">Constructor</a>
+        <a href="partida.html" class="cv-navlink">Partida</a>
+        <a href="listas.html" class="cv-navlink">Listas</a>
+      </div>
+
+      <button class="cv-hamburger cv-hamburger-right" id="cv-hamburger-right"
+              aria-label="Herramientas" aria-expanded="false" aria-controls="cv-menu-right">
+        <span></span><span></span><span></span>
+      </button>
+
+      <button class="cv-hamburger cv-hamburger-main" id="cv-hamburger-main"
+              aria-label="Men&uacute;" aria-expanded="false" aria-controls="cv-menu-main">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="cv-menu cv-menu-right" id="cv-menu-right">
+    <a href="constructor.html">Constructor</a>
+    <a href="partida.html">Partida</a>
+    <a href="listas.html">Listas</a>
+  </div>
+
+  <div class="cv-menu cv-menu-main" id="cv-menu-main">
+    <a href="index.html">Inicio</a>
+    <a href="facciones.html">Facciones</a>
+    <a href="campana.html">Campa&ntilde;a</a>
+    <a href="perfiles.html">Perfiles y reglas</a>
+    <div class="cv-menu-divider" aria-hidden="true"></div>
+    <a href="constructor.html">Constructor</a>
+    <a href="partida.html">Partida</a>
+    <a href="listas.html">Listas</a>
+  </div>
+
+  <div class="page-bg bg-constructor" aria-hidden="true"></div>
+
+  <div class="page">
+    <main id="main">
+      <div class="wrap">
+
+        <div class="page-head">
+          <div class="kicker"><i></i><span>Ej&eacute;rcitos</span></div>
+          <h1>Facciones</h1>
+          <p class="lead">Cada facci&oacute;n trae su propia forma de ganar: unas sostienen la
+            l&iacute;nea, otras la rompen. Casa Bolton, La Horda, Gondor, Isengard, N&uacute;menor
+            y el Ej&eacute;rcito de los Muertos est&aacute;n jugables de punta a punta; Lannister
+            existe como material del proyecto y todav&iacute;a no tiene perfiles cerrados.</p>
+        </div>
+
+        <div class="fac-grid">
+
+          <article class="fac-card" style="--faccion:var(--faccion-bolton);--faccion-txt:var(--faccion-bolton-txt)">
+            <div class="fac-band"></div>
+            <div class="fac-body">
+              <div class="fac-top">
+                <h2>Casa Bolton</h2>
+                <span class="fac-estado jugable">Jugable</span>
+              </div>
+              <p class="fac-lema">&laquo;Nuestras Hojas Son Afiladas&raquo;</p>
+              <p class="fac-desc">Infanter&iacute;a pesada que no cede terreno y caballer&iacute;a
+                que castiga al que se descoloca. Las Lanzas del Norte Oscuro aguantan la carga con
+                Formaci&oacute;n Inamovible mientras los Lanceros rodean por el flanco. Es una
+                facci&oacute;n de posici&oacute;n: eleg&iacute;s d&oacute;nde se pelea y
+                oblig&aacute;s al rival a venir.</p>
+              <dl class="fac-datos">
+                <div><dt>H&eacute;roes</dt><dd data-fac-heroes="bolton">&mdash;</dd></div>
+                <div><dt>Tropas</dt><dd data-fac-tropas="bolton">&mdash;</dd></div>
+                <div><dt>Desde</dt><dd data-fac-min="bolton">&mdash;</dd></div>
+              </dl>
+              <div class="fac-links">
+                <a class="btn-pri" href="perfiles.html?fac=bolton">Ver sus perfiles</a>
+                <a class="btn-sec" href="constructor.html">Armar una lista</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="fac-card" style="--faccion:var(--faccion-horda);--faccion-txt:var(--faccion-horda-txt)">
+            <div class="fac-band"></div>
+            <div class="fac-body">
+              <div class="fac-top">
+                <h2>La Horda</h2>
+                <span class="fac-estado jugable">Jugable</span>
+              </div>
+              <p class="fac-desc">Presiona por volumen y por miedo. Los Grunts salen a 10 puntos y
+                llenan la mesa; el Camp&eacute;on causa Terror y castiga el Coraje enemigo a 6&Prime;
+                con Harbinger of Evil, as&iacute; que el rival empieza a fallar chequeos antes de
+                perder modelos. Los Jinetes Raptor a 10&Prime; cierran los flancos y los Trolls
+                aguantan m&aacute;s de lo que su perfil sugiere.</p>
+              <dl class="fac-datos">
+                <div><dt>H&eacute;roes</dt><dd data-fac-heroes="horda">&mdash;</dd></div>
+                <div><dt>Tropas</dt><dd data-fac-tropas="horda">&mdash;</dd></div>
+                <div><dt>Desde</dt><dd data-fac-min="horda">&mdash;</dd></div>
+              </dl>
+              <div class="fac-links">
+                <a class="btn-pri" href="perfiles.html?fac=horda">Ver sus perfiles</a>
+                <a class="btn-sec" href="constructor.html">Armar una lista</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="fac-card" style="--faccion:var(--faccion-gondor);--faccion-txt:var(--faccion-gondor-txt)">
+            <div class="fac-band"></div>
+            <div class="fac-body">
+              <div class="fac-top">
+                <h2>Gondor</h2>
+                <span class="fac-estado jugable">Jugable</span>
+              </div>
+              <p class="fac-desc">La l&iacute;nea que no se rompe. Citadel Guard y Warrior of Minas
+                Tirith sostienen el frente con Shieldwall mientras h&eacute;roes como Boromir o
+                Faramir lideran desde dentro de la formaci&oacute;n. Gandalf puede unirse a la
+                misma Warband que tus tropas de Gondor. Cara y cruz de la misma facci&oacute;n:
+                Aragorn a 225 puntos o una l&iacute;nea barata de Warrior of Minas Tirith a 8.</p>
+              <dl class="fac-datos">
+                <div><dt>H&eacute;roes</dt><dd data-fac-heroes="gondor">&mdash;</dd></div>
+                <div><dt>Tropas</dt><dd data-fac-tropas="gondor">&mdash;</dd></div>
+                <div><dt>Desde</dt><dd data-fac-min="gondor">&mdash;</dd></div>
+              </dl>
+              <div class="fac-links">
+                <a class="btn-pri" href="perfiles.html?fac=gondor">Ver sus perfiles</a>
+                <a class="btn-sec" href="constructor.html">Armar una lista</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="fac-card" style="--faccion:var(--faccion-isengard);--faccion-txt:var(--faccion-isengard-txt)">
+            <div class="fac-band"></div>
+            <div class="fac-body">
+              <div class="fac-top">
+                <h2>Isengard</h2>
+                <span class="fac-estado jugable">Jugable</span>
+              </div>
+              <p class="fac-desc">Uruk-hai disciplinados en vez de una horda desordenada. Los
+                Uruk-hai Warrior forman Shieldwall con pica o ballesta, y h&eacute;roes como Lurtz
+                o Uglúk empujan desde el frente. Saruman aporta el &uacute;nico control de
+                Prioridad garantizado del juego con el Palant&iacute;r. Incluye a los aliados de
+                Dunland: Wild Man Oathmaker y su gente, fan&aacute;ticos y baratos.</p>
+              <dl class="fac-datos">
+                <div><dt>H&eacute;roes</dt><dd data-fac-heroes="isengard">&mdash;</dd></div>
+                <div><dt>Tropas</dt><dd data-fac-tropas="isengard">&mdash;</dd></div>
+                <div><dt>Desde</dt><dd data-fac-min="isengard">&mdash;</dd></div>
+              </dl>
+              <div class="fac-links">
+                <a class="btn-pri" href="perfiles.html?fac=isengard">Ver sus perfiles</a>
+                <a class="btn-sec" href="constructor.html">Armar una lista</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="fac-card" style="--faccion:var(--faccion-numenor);--faccion-txt:var(--faccion-numenor-txt)">
+            <div class="fac-band"></div>
+            <div class="fac-body">
+              <div class="fac-top">
+                <h2>N&uacute;menor</h2>
+                <span class="fac-estado jugable">Jugable</span>
+              </div>
+              <p class="fac-desc">Sub-lista de Gondor centrada en Elendil e Isildur: pocos
+                perfiles pero de los m&aacute;s duros del juego &mdash; Elendil pega con Fight 8 y
+                Strength 5. Si Elendil cae, Isildur puede recoger los Shards of Narsil sobre su
+                cuerpo. Se juega aparte de Gondor porque el libro la trata como lista propia.</p>
+              <dl class="fac-datos">
+                <div><dt>H&eacute;roes</dt><dd data-fac-heroes="numenor">&mdash;</dd></div>
+                <div><dt>Tropas</dt><dd data-fac-tropas="numenor">&mdash;</dd></div>
+                <div><dt>Desde</dt><dd data-fac-min="numenor">&mdash;</dd></div>
+              </dl>
+              <div class="fac-links">
+                <a class="btn-pri" href="perfiles.html?fac=numenor">Ver sus perfiles</a>
+                <a class="btn-sec" href="constructor.html">Armar una lista</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="fac-card" style="--faccion:var(--faccion-dunharrow);--faccion-txt:var(--faccion-dunharrow-txt)">
+            <div class="fac-band"></div>
+            <div class="fac-body">
+              <div class="fac-top">
+                <h2>Ej&eacute;rcito de los Muertos</h2>
+                <span class="fac-estado jugable">Jugable</span>
+              </div>
+              <p class="fac-desc">Espectros de Dunharrow: Defensa alta, Terror y la regla Drain
+                Soul del King of the Dead, que mata en lugar de herir. Sub-lista peque&ntilde;a
+                (4 perfiles) pensada para combinarse con Gondor en una partida &mdash; no para
+                sostener un ej&eacute;rcito completa por s&iacute; sola.</p>
+              <dl class="fac-datos">
+                <div><dt>H&eacute;roes</dt><dd data-fac-heroes="dunharrow">&mdash;</dd></div>
+                <div><dt>Tropas</dt><dd data-fac-tropas="dunharrow">&mdash;</dd></div>
+                <div><dt>Desde</dt><dd data-fac-min="dunharrow">&mdash;</dd></div>
+              </dl>
+              <div class="fac-links">
+                <a class="btn-pri" href="perfiles.html?fac=dunharrow">Ver sus perfiles</a>
+                <a class="btn-sec" href="constructor.html">Armar una lista</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="fac-card is-wip" style="--faccion:var(--faccion-lannister);--faccion-txt:var(--faccion-lannister-txt)">
+            <div class="fac-band"></div>
+            <div class="fac-body">
+              <div class="fac-top">
+                <h2>Lannister</h2>
+                <span class="fac-estado">En preparaci&oacute;n</span>
+              </div>
+              <p class="fac-desc">Hay im&aacute;genes y notas en el proyecto. Sin perfiles
+                cerrados todav&iacute;a.</p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+  /* Los contadores de la tarjeta salen de data.js: si ma&ntilde;ana se
+     a&ntilde;ade un h&eacute;roe, la tarjeta se actualiza sola.
+     Va dentro de DOMContentLoaded porque este bloque se analiza antes
+     que data.js, que est&aacute; al final del body. */
+  document.addEventListener("DOMContentLoaded", function(){
+    Object.keys(FACTIONS).forEach(function(id){
+      var f = FACTIONS[id];
+      var h = document.querySelector('[data-fac-heroes="' + id + '"]');
+      var t = document.querySelector('[data-fac-tropas="' + id + '"]');
+      var m = document.querySelector('[data-fac-min="' + id + '"]');
+      if (h) h.textContent = f.heroes.length;
+      if (t) t.textContent = f.warriors.length;
+      if (m) {
+        var costes = f.warriors.map(function(w){ return w.cost; });
+        m.textContent = costes.length ? Math.min.apply(null, costes) + ' pts/modelo' : '\u2014';
+      }
+    });
+  });
+  </script>
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <span class="marca">Convergence</span>
+          <p>Wargame de miniaturas por turnos. Ej&eacute;rcitos de mundos que nunca
+             debieron cruzarse, enfrentados sobre el mismo campo.</p>
+        </div>
+        <div class="foot-col">
+          <h4>El juego</h4>
+          <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="facciones.html">Facciones</a></li>
+            <li><a href="campana.html">Campa&ntilde;a</a></li>
+            <li><a href="perfiles.html">Perfiles y reglas</a></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h4>Herramientas</h4>
+          <ul>
+            <li><a href="constructor.html">Constructor de ej&eacute;rcitos</a></li>
+            <li><a href="partida.html">Seguimiento de partida</a></li>
+            <li><a href="listas.html">Listas guardadas</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-legal">
+        <p>Proyecto de fans sin &aacute;nimo de lucro. No est&aacute; afiliado ni respaldado por
+           Games Workshop ni por Middle-earth Enterprises. Las reglas de referencia pertenecen
+           a sus respectivos propietarios; este sitio s&oacute;lo re&uacute;ne material propio y
+           herramientas de apoyo para jugar en mesa.</p>
+        <p>Contacto: <a href="mailto:convergence@ejemplo.org">convergence@ejemplo.org</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/nav.js"></script>
+</body>
+</html>

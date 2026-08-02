@@ -1,0 +1,282 @@
+/* =====================================================================
+   CONVERGENCE — FACCIONES, CAMPAÑA Y PERFILES
+   Páginas de contenido. Depende de tokens.css, site.css y builder.css
+   (reutiliza .panel, .btn, .campo y las tablas).
+   ===================================================================== */
+
+/* =====================================================================
+   1. FACCIONES
+   El color de banda sale de --faccion, que cada tarjeta fija a la
+   variable de su facción. Nunca un literal suelto.
+   ===================================================================== */
+.fac-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
+  gap:20px;padding-bottom:70px;
+}
+.fac-card{
+  background:var(--panel);
+  border:1px solid var(--linea-oro);
+  border-radius:var(--r);
+  overflow:hidden;display:flex;flex-direction:column;
+}
+.fac-band{height:3px;background:var(--faccion, var(--oro));}
+.fac-body{padding:22px;display:flex;flex-direction:column;flex:1;}
+.fac-top{display:flex;align-items:flex-start;gap:12px;margin-bottom:10px;}
+.fac-top h2{font-size:1.32rem;text-transform:uppercase;flex:1;}
+
+.fac-estado{
+  font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;
+  padding:4px 8px;border-radius:var(--r);white-space:nowrap;
+  border:1px solid var(--linea-hueso-fuerte);color:var(--txt-dim);
+}
+.fac-estado.jugable{background:var(--oro);color:var(--negro);border-color:var(--oro);}
+
+/* El lema usa la variante clara: el color de banda no llega a 4,5:1 */
+.fac-lema{
+  font-family:var(--f-titulo);font-style:italic;
+  color:var(--faccion-txt, var(--oro));
+  margin:0 0 14px;font-size:.98rem;
+}
+.fac-desc{color:var(--txt-suave);font-size:.9rem;line-height:1.6;margin:0 0 18px;}
+
+.fac-datos{
+  display:flex;gap:26px;flex-wrap:wrap;margin:0 0 20px;
+  padding-top:16px;border-top:1px solid var(--linea-hueso);
+}
+.fac-datos dt{
+  font-size:.6rem;letter-spacing:var(--ls-lb);text-transform:uppercase;
+  color:var(--oro);margin-bottom:3px;
+}
+.fac-datos dd{margin:0;font-family:var(--f-titulo);font-size:1.05rem;color:var(--hueso);}
+
+.fac-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:auto;}
+.fac-links .btn-pri,.fac-links .btn-sec{padding:11px 20px;font-size:.82rem;}
+
+/* En preparación: sin enlace y en gris.
+   Se apagan los colores uno a uno en vez de con opacity sobre la tarjeta:
+   un opacity global se multiplicaba con el alfa del propio texto y lo
+   dejaba en 1,7:1, ilegible. Así se queda apagada pero por encima de 4,5:1. */
+.fac-card.is-wip{background:rgba(20,17,14,.62);}
+.fac-card.is-wip .fac-band{background:var(--linea-hueso);}
+.fac-card.is-wip h2{color:var(--txt-dim);}
+.fac-card.is-wip .fac-desc{color:var(--txt-dim);}
+.fac-card.is-wip .fac-estado{color:var(--txt-dim);border-color:var(--linea-hueso);}
+
+/* =====================================================================
+   2. CAMPAÑA
+   ===================================================================== */
+.aviso{
+  background:rgba(201,162,39,.09);
+  border:1px solid var(--linea-oro);
+  border-left:2px solid var(--oro);
+  border-radius:var(--r);
+  padding:20px 24px;margin-bottom:44px;
+}
+.aviso-lb{
+  display:inline-block;
+  font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;
+  background:var(--oro);color:var(--negro);
+  padding:3px 9px;border-radius:var(--r);margin-bottom:12px;
+}
+.aviso p{margin:0;color:var(--txt-suave);font-size:.93rem;line-height:1.65;}
+
+.bloque{margin-bottom:44px;max-width:74ch;}
+.bloque:last-child{padding-bottom:70px;}
+.bloque h2{
+  font-size:1.22rem;text-transform:uppercase;margin-bottom:14px;
+  padding-bottom:12px;border-bottom:1px solid var(--linea-oro);
+}
+.bloque p{color:var(--txt-suave);margin:0 0 14px;}
+.bloque a{color:var(--oro);border-bottom:1px solid var(--linea-oro);}
+.bloque a:hover{border-bottom-color:var(--oro);}
+
+.lista-marco{list-style:none;margin:0 0 16px;padding:0;}
+.lista-marco li{
+  color:var(--txt-suave);margin-bottom:13px;padding-left:20px;position:relative;
+  line-height:1.6;
+}
+.lista-marco li::before{
+  content:'';position:absolute;left:0;top:.65em;
+  width:8px;height:1px;background:var(--oro);
+}
+.lista-marco b{color:var(--hueso);font-weight:600;}
+.nota{font-size:.85rem;color:var(--txt-dim);font-style:italic;}
+
+/* =====================================================================
+   3. PERFILES — filtros
+   ===================================================================== */
+.filtros{margin-bottom:20px;}
+.filtro-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  gap:16px;align-items:end;
+}
+.campo{display:flex;flex-direction:column;gap:6px;}
+.campo label{
+  font-size:.62rem;letter-spacing:var(--ls-lb);text-transform:uppercase;
+  color:var(--oro);font-weight:500;
+}
+.campo-busq{grid-column:span 2;}
+.campo-reset{justify-content:flex-end;}
+
+input[type="range"]{
+  -webkit-appearance:none;appearance:none;
+  background:transparent;padding:0;border:none;height:22px;cursor:pointer;
+}
+input[type="range"]::-webkit-slider-runnable-track{
+  height:2px;background:var(--linea-hueso-fuerte);
+}
+input[type="range"]::-webkit-slider-thumb{
+  -webkit-appearance:none;appearance:none;
+  width:14px;height:14px;border-radius:50%;background:var(--oro);
+  margin-top:-6px;border:none;
+}
+input[type="range"]::-moz-range-track{height:2px;background:var(--linea-hueso-fuerte);}
+input[type="range"]::-moz-range-thumb{
+  width:14px;height:14px;border:none;border-radius:50%;background:var(--oro);
+}
+
+.filtro-info{
+  margin-top:16px;padding-top:14px;border-top:1px solid var(--linea-hueso);
+  font-size:.8rem;color:var(--txt-dim);
+}
+
+/* =====================================================================
+   4. PERFILES — tabla
+   Hairlines entre filas, sin bordes de caja, cabecera en oro.
+   ===================================================================== */
+.tabla-scroll{overflow-x:auto;}
+table.perfiles{
+  width:100%;border-collapse:collapse;
+  font-size:.86rem;min-width:900px;
+}
+table.perfiles th{
+  color:var(--oro);
+  font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;font-weight:500;
+  padding:15px 8px;text-align:center;white-space:nowrap;
+  border-bottom:1px solid var(--linea-oro);
+  cursor:pointer;user-select:none;position:relative;
+  background:rgba(20,17,14,.5);
+}
+table.perfiles th:hover{color:var(--hueso);}
+table.perfiles th.col-nm{text-align:left;padding-left:18px;min-width:230px;}
+table.perfiles th[aria-sort]::after{
+  content:'\\25B2';font-size:.5rem;margin-left:5px;color:var(--oro);
+}
+table.perfiles th[aria-sort="descending"]::after{content:'\\25BC';}
+
+table.perfiles td{
+  padding:13px 8px;text-align:center;
+  border-bottom:1px solid var(--linea-hueso);
+  color:var(--txt);font-variant-numeric:tabular-nums;
+}
+table.perfiles tbody tr{cursor:pointer;transition:background 140ms ease;}
+table.perfiles tbody tr:hover{background:rgba(201,162,39,.07);}
+table.perfiles tbody tr:last-child td{border-bottom:none;}
+
+td.col-nm{text-align:left;padding-left:18px;}
+.p-nombre{display:flex;align-items:center;gap:12px;}
+.p-nombre img{
+  width:38px;height:38px;object-fit:cover;border-radius:var(--r);
+  border:1px solid var(--linea-hueso);border-top:2px solid var(--faccion,var(--oro));
+  background:#000;flex:none;
+}
+.p-nombre .n{font-weight:500;color:var(--hueso);}
+.p-nombre .m{
+  font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--txt-dim);margin-top:2px;
+}
+td.col-cost{font-family:var(--f-titulo);font-weight:700;color:var(--oro);font-size:.98rem;}
+.vacio{color:var(--txt-tenue);}
+.sin-datos{padding:44px 18px;text-align:center;color:var(--txt-dim);}
+
+/* =====================================================================
+   5. PERFILES — ficha
+   ===================================================================== */
+.ficha-fondo{
+  position:fixed;inset:0;z-index:60;
+  background:rgba(6,5,4,.82);
+  display:flex;align-items:flex-start;justify-content:center;
+  padding:5vh 20px;overflow-y:auto;
+}
+.ficha-fondo[hidden]{display:none;}
+.ficha{
+  position:relative;width:100%;max-width:760px;
+  background:var(--panel-solido);
+  border:1px solid var(--linea-oro);
+  border-top:2px solid var(--faccion,var(--oro));
+  border-radius:var(--r);
+}
+.ficha-cerrar{
+  position:absolute;top:12px;right:14px;z-index:2;
+  font-size:1.6rem;line-height:1;color:var(--txt-dim);
+  background:none;border:none;padding:6px 10px;
+}
+.ficha-cerrar:hover{color:var(--oro);}
+.ficha-cuerpo{padding:30px;}
+
+.ficha-head{display:flex;gap:22px;align-items:flex-start;margin-bottom:24px;flex-wrap:wrap;}
+.ficha-head img{
+  width:132px;height:132px;object-fit:cover;flex:none;
+  border:1px solid var(--linea-hueso);border-top:2px solid var(--faccion,var(--oro));
+  border-radius:var(--r);background:#000;
+}
+.ficha-id{flex:1;min-width:200px;}
+.ficha-id h2{font-size:1.55rem;text-transform:uppercase;margin-bottom:8px;}
+.ficha-meta{
+  font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--txt-dim);margin-bottom:14px;
+}
+.ficha-coste{font-family:var(--f-titulo);font-size:1.75rem;font-weight:700;color:var(--oro);}
+.ficha-coste span{font-size:.78rem;color:var(--txt-dim);letter-spacing:.1em;margin-left:5px;}
+
+.ficha-cuerpo .blk:last-child{margin-bottom:0;}
+.ficha-opts{list-style:none;margin:0;padding:0;}
+.ficha-opts li{
+  display:flex;align-items:baseline;gap:12px;
+  padding:9px 0;border-bottom:1px solid var(--linea-hueso);
+  color:var(--txt-suave);font-size:.87rem;
+}
+.ficha-opts li:last-child{border-bottom:none;}
+.ficha-opts .oc{
+  font-family:var(--f-titulo);font-weight:700;color:var(--oro);
+  margin-left:auto;white-space:nowrap;
+}
+.ficha-opts .od{display:block;font-size:.75rem;color:var(--txt-dim);margin-top:2px;}
+
+/* Sub-perfil de montura dentro de la ficha del héroe */
+.sub-montura{
+  border:1px solid var(--linea-hueso);
+  border-left:2px solid var(--faccion,var(--oro));
+  border-radius:var(--r);
+  padding:16px 18px;
+  background:rgba(10,9,8,.34);
+}
+.sub-montura-img{
+  float:right;width:84px;height:84px;object-fit:cover;
+  margin:0 0 10px 16px;
+  border:1px solid var(--linea-hueso);border-radius:var(--r);background:#000;
+}
+.sub-montura table.st{margin-top:8px;}
+.sub-montura::after{content:'';display:block;clear:both;}
+
+/* =====================================================================
+   6. GLOSARIO
+   ===================================================================== */
+.glosario{
+  display:flex;align-items:center;gap:26px;flex-wrap:wrap;
+  background:var(--panel);
+  border:1px solid var(--linea-oro);
+  border-radius:var(--r);
+  padding:26px 28px;margin:26px 0 70px;
+}
+.glosario h2{font-size:1.1rem;text-transform:uppercase;margin-bottom:8px;}
+.glosario p{margin:0;color:var(--txt-suave);font-size:.89rem;max-width:60ch;}
+.glosario>div{flex:1;min-width:260px;}
+.glosario .btn-sec{padding:12px 24px;font-size:.85rem;white-space:nowrap;}
+
+@media (max-width:640px){
+  .campo-busq{grid-column:span 1;}
+  .ficha-cuerpo{padding:22px;}
+  .ficha-head img{width:96px;height:96px;}
+  .fac-body{padding:18px;}
+}

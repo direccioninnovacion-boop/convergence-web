@@ -1,0 +1,83 @@
+/* =====================================================================
+   CONVERGENCE — TOKENS
+   Fuente única de verdad para color, tipografía y medidas.
+   Los valores base salen del hero (Claude Design). No dupliques
+   literales de color en ningún otro archivo: referenciá estas variables.
+   ===================================================================== */
+
+:root{
+  /* ---------- Paleta base ---------- */
+  --oro:#C9A227;
+  --verde:#2F4438;
+  --negro:#14110E;
+  --hueso:#EDE6D6;
+  --sangre:#7C2D2D;
+
+  /* ---------- Superficies ----------
+     Derivadas del negro base. El panel es semitransparente a propósito:
+     las tres páginas de herramienta llevan fondo fotográfico detrás. */
+  --panel:rgba(20,17,14,.82);
+  --panel-solido:#14110E;
+  --panel-alt:rgba(20,17,14,.62);
+  --scrim:rgba(10,12,14,.62);
+
+  /* ---------- Filetes y bordes ----------
+     El hairline de oro al 18% es el borde estándar de todo panel.
+     El de hueso al 10% separa filas dentro de una tabla. */
+  --linea-oro:rgba(201,162,39,.18);
+  --linea-oro-fuerte:rgba(201,162,39,.35);
+  --linea-hueso:rgba(237,230,214,.10);
+  --linea-hueso-fuerte:rgba(237,230,214,.45);
+
+  /* ---------- Texto ---------- */
+  --txt:var(--hueso);
+  --txt-suave:rgba(237,230,214,.82);
+  --txt-dim:rgba(237,230,214,.58);
+  --txt-tenue:rgba(237,230,214,.38);
+
+  /* ---------- Estados ---------- */
+  --ok:#5C8A4A;
+  --alerta:var(--oro);
+  --error:#B23B3B;
+  --error-txt:#E08B8B;
+
+  /* ---------- Tipografía ---------- */
+  --f-titulo:'Cinzel', Georgia, serif;
+  --f-texto:'Jost', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --ls-titulo:.06em;   /* tracking de estandarte del hero */
+  --ls-kicker:.22em;
+  --ls-nav:.12em;
+  --ls-lb:.14em;
+
+  /* ---------- Geometría ----------
+     Radios mínimos: nada de tarjeta SaaS. */
+  --r:2px;
+  --r-sm:2px;
+
+  /* ---------- Facciones ----------
+     Una variable por facción. Es lo que mantiene coherentes la web,
+     las tarjetas de facción y las fichas de perfil. */
+  --faccion-bolton:#8b1a1a;
+  --faccion-gondor:#2f4d75;
+  --faccion-isengard:#3b3a36;
+  --faccion-lannister:#9b7d1f;
+  --faccion-horda:#5a3a22;
+  --faccion-numenor:#52586b;
+  --faccion-dunharrow:#3f5c4f;
+
+  /* Variante clara de cada facción, para TEXTO.
+     Los colores de arriba son de banda: sobre panel oscuro se quedan en
+     3,4:1 y no llegan al mínimo de 4,5:1. Estos sí (6:1 o más). */
+  --faccion-bolton-txt:#E8756F;
+  --faccion-gondor-txt:#8FB4DE;
+  --faccion-isengard-txt:#B9B6AC;
+  --faccion-lannister-txt:#E0C158;
+  --faccion-horda-txt:#D9A87A;
+  --faccion-numenor-txt:#AEB3C4;
+  --faccion-dunharrow-txt:#8FBFA0;
+
+  /* Facción activa. renderCabecera() la reescribe en runtime a través de
+     --fac, que es el nombre que usa el piloto. */
+  --fac:var(--faccion-bolton);
+}

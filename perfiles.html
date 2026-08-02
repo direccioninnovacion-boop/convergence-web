@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Perfiles y reglas &mdash; CONVERGENCE</title>
+<meta name="description" content="Todas las estad&iacute;sticas, reglas especiales y opciones de los perfiles de Convergence, con buscador y filtros.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/site.css">
+  <link rel="stylesheet" href="assets/css/builder.css">
+  <link rel="stylesheet" href="assets/css/paginas.css">
+</head>
+<body>
+
+  <a class="skip" href="#main">Saltar al contenido</a>
+
+  <div class="cv-nav-scrim-top" aria-hidden="true"></div>
+  <div class="cv-nav-scrim-right" aria-hidden="true"></div>
+
+  <nav class="cv-nav is-fixed" id="cv-nav" aria-label="Principal">
+    <div class="cv-nav-groups">
+      <div class="cv-nav-left">
+        <a href="facciones.html" class="cv-navlink">Facciones</a>
+        <a href="campana.html" class="cv-navlink">Campa&ntilde;a</a>
+        <a href="perfiles.html" class="cv-navlink">Perfiles y reglas</a>
+      </div>
+
+      <div class="cv-nav-right">
+        <a href="constructor.html" class="cv-navlink">Constructor</a>
+        <a href="partida.html" class="cv-navlink">Partida</a>
+        <a href="listas.html" class="cv-navlink">Listas</a>
+      </div>
+
+      <button class="cv-hamburger cv-hamburger-right" id="cv-hamburger-right"
+              aria-label="Herramientas" aria-expanded="false" aria-controls="cv-menu-right">
+        <span></span><span></span><span></span>
+      </button>
+
+      <button class="cv-hamburger cv-hamburger-main" id="cv-hamburger-main"
+              aria-label="Men&uacute;" aria-expanded="false" aria-controls="cv-menu-main">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="cv-menu cv-menu-right" id="cv-menu-right">
+    <a href="constructor.html">Constructor</a>
+    <a href="partida.html">Partida</a>
+    <a href="listas.html">Listas</a>
+  </div>
+
+  <div class="cv-menu cv-menu-main" id="cv-menu-main">
+    <a href="index.html">Inicio</a>
+    <a href="facciones.html">Facciones</a>
+    <a href="campana.html">Campa&ntilde;a</a>
+    <a href="perfiles.html">Perfiles y reglas</a>
+    <div class="cv-menu-divider" aria-hidden="true"></div>
+    <a href="constructor.html">Constructor</a>
+    <a href="partida.html">Partida</a>
+    <a href="listas.html">Listas</a>
+  </div>
+
+  <div class="page-bg bg-listas" aria-hidden="true"></div>
+
+  <div class="page">
+    <main id="main">
+      <div class="wrap-wide">
+
+        <div class="page-head">
+          <div class="kicker"><i></i><span>Datos</span></div>
+          <h1>Perfiles y reglas</h1>
+          <p class="lead">Todas las estad&iacute;sticas del juego, le&iacute;das directamente de
+            la misma fuente que usa el constructor. Filtr&aacute;, orden&aacute; y abr&iacute;
+            cualquier perfil para ver su ficha completa.</p>
+        </div>
+
+        <div class="panel filtros">
+          <div class="pbody">
+            <div class="filtro-grid">
+              <div class="campo">
+                <label for="fFac">Facci&oacute;n</label>
+                <select id="fFac"></select>
+              </div>
+              <div class="campo">
+                <label for="fTipo">Tipo</label>
+                <select id="fTipo">
+                  <option value="">Todos</option>
+                  <option value="hero">H&eacute;roes</option>
+                  <option value="war">Tropas</option>
+                  <option value="mount">Monturas</option>
+                </select>
+              </div>
+              <div class="campo">
+                <label for="fTier">Rango heroico</label>
+                <select id="fTier"></select>
+              </div>
+              <div class="campo">
+                <label for="fCoste">Coste m&aacute;ximo: <span id="fCosteVal">&mdash;</span> pts</label>
+                <input type="range" id="fCoste" min="0" max="200" step="1">
+              </div>
+              <div class="campo campo-busq">
+                <label for="fBusq">Buscar</label>
+                <input type="search" id="fBusq" placeholder="Nombre, regla, palabra clave&hellip;">
+              </div>
+              <div class="campo campo-reset">
+                <button class="btn" id="fReset">Limpiar</button>
+              </div>
+            </div>
+            <div class="filtro-info" id="fInfo"></div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="tabla-scroll">
+            <table class="perfiles" id="tablaPerfiles">
+              <thead>
+                <tr>
+                  <th class="col-nm" data-sort="name">Perfil</th>
+                  <th data-sort="cost">Coste</th>
+                  <th data-sort="mv" title="Movimiento">Mv</th>
+                  <th data-sort="fv" title="Valor de Combate">Fv</th>
+                  <th data-sort="sv" title="Valor de Disparo">Sv</th>
+                  <th data-sort="s" title="Fuerza">S</th>
+                  <th data-sort="d" title="Defensa">D</th>
+                  <th data-sort="a" title="Ataques">A</th>
+                  <th data-sort="w" title="Heridas">W</th>
+                  <th data-sort="c" title="Coraje">C</th>
+                  <th data-sort="i" title="Intuici&oacute;n">I</th>
+                  <th data-sort="might" title="Poder">Poder</th>
+                  <th data-sort="will" title="Voluntad">Vol.</th>
+                  <th data-sort="fate" title="Destino">Dest.</th>
+                </tr>
+              </thead>
+              <tbody id="cuerpoPerfiles"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="glosario">
+          <div>
+            <h2>Glosario de reglas especiales</h2>
+            <p>Las reglas que aparecen en las fichas est&aacute;n descritas en detalle en el
+              documento de reglas especiales del Rules Manual 2024.</p>
+          </div>
+          <a class="btn-sec" href="../Reglas/Reglas_Especiales_MESBG_2024.md">Abrir el glosario</a>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- Ficha completa -->
+  <div class="ficha-fondo" id="fichaFondo" hidden>
+    <div class="ficha" id="ficha" role="dialog" aria-modal="true" aria-labelledby="fichaTitulo">
+      <button class="ficha-cerrar" id="fichaCerrar" aria-label="Cerrar ficha">&times;</button>
+      <div class="ficha-cuerpo" id="fichaCuerpo"></div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <span class="marca">Convergence</span>
+          <p>Wargame de miniaturas por turnos. Ej&eacute;rcitos de mundos que nunca
+             debieron cruzarse, enfrentados sobre el mismo campo.</p>
+        </div>
+        <div class="foot-col">
+          <h4>El juego</h4>
+          <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="facciones.html">Facciones</a></li>
+            <li><a href="campana.html">Campa&ntilde;a</a></li>
+            <li><a href="perfiles.html">Perfiles y reglas</a></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h4>Herramientas</h4>
+          <ul>
+            <li><a href="constructor.html">Constructor de ej&eacute;rcitos</a></li>
+            <li><a href="partida.html">Seguimiento de partida</a></li>
+            <li><a href="listas.html">Listas guardadas</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-legal">
+        <p>Proyecto de fans sin &aacute;nimo de lucro. No est&aacute; afiliado ni respaldado por
+           Games Workshop ni por Middle-earth Enterprises. Las reglas de referencia pertenecen
+           a sus respectivos propietarios; este sitio s&oacute;lo re&uacute;ne material propio y
+           herramientas de apoyo para jugar en mesa.</p>
+        <p>Contacto: <a href="mailto:convergence@ejemplo.org">convergence@ejemplo.org</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/perfiles.js"></script>
+  <script src="assets/js/nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+# Material de trabajo que no forma parte del sitio publicado.
+# Las páginas ya migraron sus assets a assets/img y assets/video;
+# esto son los originales/borradores, no hace falta publicarlos.
+# Alcance solo a la raíz (/) para no tocar nada dentro de assets/,
+# que sí se sirve en producción (incluye .mp4 y .jpg reales del sitio).
+/bg/
+/hero/
+/*.md
+/*.mp4
+/*.png

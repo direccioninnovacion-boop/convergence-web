@@ -1,0 +1,449 @@
+/* =====================================================================
+   CONVERGENCE — SHELL DEL SITIO
+   Base tipográfica, navegación, hero, secciones de aterrizaje y footer.
+   Depende de tokens.css: cargalo antes que este archivo.
+   ===================================================================== */
+
+/* =====================================================================
+   1. BASE
+   ===================================================================== */
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--negro);
+  color:var(--txt);
+  font-family:var(--f-texto);
+  font-size:16px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--hueso);text-decoration:none;}
+img{max-width:100%;}
+
+h1,h2,h3,h4{
+  font-family:var(--f-titulo);
+  font-weight:700;
+  letter-spacing:var(--ls-titulo);
+  color:var(--hueso);
+  margin:0;
+  line-height:1.15;
+}
+
+/* Foco visible en todo interactivo — requisito de accesibilidad */
+*:focus-visible{outline:2px solid var(--oro);outline-offset:3px;}
+
+/* Etiqueta de sección: versalitas en oro sobre un filete */
+.lb{
+  font-size:.7rem;
+  letter-spacing:var(--ls-lb);
+  text-transform:uppercase;
+  color:var(--oro);
+  font-weight:500;
+}
+
+.sr-only{
+  position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+  overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;
+}
+
+/* Salto al contenido, primer tabulable de cada página */
+.skip{
+  position:absolute;left:-9999px;top:0;z-index:100;
+  background:var(--oro);color:var(--negro);padding:10px 18px;
+  font-weight:600;border-radius:var(--r);
+}
+.skip:focus{left:12px;top:12px;}
+
+/* =====================================================================
+   2. NAVEGACIÓN
+   Extraída del hero sin cambios de comportamiento: transparente al
+   inicio, opaca con blur a partir de 80px de scroll.
+   ===================================================================== */
+.cv-nav-scrim-top{
+  position:absolute;top:0;left:0;right:0;height:130px;z-index:6;pointer-events:none;
+  background:linear-gradient(180deg, rgba(10,12,14,.62) 0%, transparent 100%);
+}
+.cv-nav-scrim-right{
+  position:absolute;top:0;right:0;width:34%;height:130px;z-index:7;pointer-events:none;
+  background:linear-gradient(270deg, rgba(10,12,14,.40) 0%, transparent 100%);
+}
+
+.cv-nav{
+  position:absolute;top:0;left:0;right:0;z-index:10;
+  display:flex;align-items:center;
+  padding:22px 5%;
+  background:transparent;backdrop-filter:none;
+  border-bottom:1px solid transparent;
+  transition:background 240ms ease, backdrop-filter 240ms ease, border-color 240ms ease;
+}
+.cv-nav.is-scrolled{
+  background:rgba(20,17,14,.92);
+  backdrop-filter:blur(8px);
+  border-bottom-color:var(--linea-oro);
+}
+/* En las páginas interiores la barra es fija y ya nace opaca */
+.cv-nav.is-fixed{position:fixed;}
+
+/* Izquierda al 5%, derecha al 5%: los dos grupos anclados a los bordes */
+.cv-nav-groups{display:flex;align-items:center;width:100%;}
+.cv-nav-left{display:flex;gap:30px;align-items:center;}
+.cv-nav-right{display:flex;gap:30px;align-items:center;margin-left:auto;}
+
+.cv-navlink{
+  display:inline-block;
+  font-size:.78rem;letter-spacing:var(--ls-nav);text-transform:uppercase;font-weight:500;
+  color:rgba(237,230,214,.78);
+  position:relative;padding-bottom:6px;
+}
+.cv-navlink::after{
+  content:'';position:absolute;left:50%;bottom:0;transform:translateX(-50%);
+  height:1px;width:0;background:var(--oro);transition:width 220ms ease;
+}
+.cv-navlink:hover{color:var(--hueso);}
+.cv-navlink:hover::after{width:100%;}
+
+/* Página actual: filete de oro permanente */
+.cv-navlink.is-active{color:var(--hueso);}
+.cv-navlink.is-active::after{width:100%;}
+
+.cv-hamburger{
+  background:none;border:none;display:none;flex-direction:column;gap:5px;
+  padding:6px;cursor:pointer;margin-left:auto;
+}
+.cv-hamburger span{display:block;height:2px;background:var(--hueso);}
+.cv-hamburger-right span{width:20px;}
+.cv-hamburger-main span{width:22px;}
+
+.cv-menu{
+  position:absolute;top:66px;z-index:20;
+  background:rgba(20,17,14,.97);
+  border:1px solid var(--linea-oro);
+  border-radius:var(--r);
+  display:none;flex-direction:column;
+}
+.cv-menu.is-open{display:flex;}
+.cv-menu a{
+  font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;font-weight:500;
+  color:rgba(237,230,214,.85);
+}
+.cv-menu a:hover{color:var(--oro);}
+.cv-menu-right{right:5%;padding:16px 20px;gap:14px;}
+.cv-menu-main{left:5%;padding:20px 24px;gap:16px;min-width:220px;}
+.cv-menu-main a{font-size:.85rem;}
+.cv-menu-divider{height:1px;background:rgba(237,230,214,.16);}
+/* Con la barra fija, los desplegables tienen que acompañarla */
+.cv-nav.is-fixed ~ .cv-menu{position:fixed;}
+
+/* =====================================================================
+   3. HERO (solo index.html)
+   Valores de overlay medidos sobre la luminancia real del video.
+   No los ajustes a ojo.
+   ===================================================================== */
+@keyframes cv-scrollcue{
+  0%{transform:scaleY(0);transform-origin:top;opacity:0;}
+  30%{transform:scaleY(1);transform-origin:top;opacity:1;}
+  70%{transform:scaleY(1);transform-origin:bottom;opacity:1;}
+  100%{transform:scaleY(0);transform-origin:bottom;opacity:0;}
+}
+
+.cv-hero{
+  position:relative;width:100%;min-height:88vh;overflow:hidden;
+  background:var(--negro);font-family:var(--f-texto);
+}
+
+.cv-poster-bg{
+  display:none;position:absolute;inset:0;background-color:var(--negro);
+  background-image:url('../video/hero-poster.jpg');
+  background-size:cover;background-position:72% center;
+}
+.cv-video-layer{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:68% center;
+  opacity:1;will-change:opacity;
+}
+#cv-video-b{opacity:0;}
+
+.cv-overlay-h{
+  position:absolute;inset:0;
+  background:linear-gradient(90deg, rgba(10,12,14,.78) 0%, rgba(10,12,14,.62) 28%, rgba(10,12,14,.34) 46%, rgba(10,12,14,0) 66%);
+}
+.cv-overlay-bottom{
+  position:absolute;inset:0;
+  background:linear-gradient(0deg, rgba(10,12,14,.55) 0%, transparent 22%);
+}
+.cv-overlay-v{
+  display:none;position:absolute;inset:0;
+  background:linear-gradient(180deg, rgba(10,12,14,.35) 0%, rgba(10,12,14,.88) 62%);
+}
+
+.cv-textcol{
+  position:absolute;top:50%;transform:translateY(-54%);left:5%;
+  width:37%;max-width:37%;z-index:5;
+  display:flex;flex-direction:column;align-items:flex-start;
+}
+.cv-kicker{display:flex;align-items:center;gap:14px;margin-bottom:20px;}
+.cv-kicker-bar{display:inline-block;width:28px;height:1px;background:var(--oro);}
+.cv-kicker-text{
+  font-size:.8rem;text-transform:uppercase;letter-spacing:var(--ls-kicker);
+  color:var(--oro);font-weight:500;
+}
+.cv-title{
+  margin:0;font-family:var(--f-titulo);font-weight:700;
+  font-size:clamp(2.4rem,5vw,4.5rem);line-height:1.02;
+  letter-spacing:var(--ls-titulo);color:var(--hueso);white-space:nowrap;
+}
+.cv-rule{width:100%;height:1px;background:var(--linea-oro-fuerte);margin:18px 0;}
+.cv-tagline{
+  margin:0 0 38px 0;font-size:clamp(1rem,1.45vw,1.2rem);line-height:1.6;
+  max-width:46ch;color:var(--txt-suave);
+}
+.cv-ctas{display:flex;gap:18px;}
+.cv-scrollcue{
+  position:absolute;left:5%;bottom:6%;z-index:5;
+  display:flex;flex-direction:column;align-items:flex-start;gap:10px;
+}
+.cv-scrollcue-line{
+  display:block;width:1px;height:40px;background:rgba(201,162,39,.4);
+  animation:cv-scrollcue 2.4s ease-in-out infinite;
+}
+.cv-scrollcue-label{font-size:.7rem;letter-spacing:.2em;color:var(--txt-dim);}
+
+/* =====================================================================
+   4. BOTONES (compartidos por todo el sitio)
+   ===================================================================== */
+.btn-pri,.btn-sec{
+  display:inline-block;border-radius:var(--r);
+  padding:15px 32px;font-weight:600;font-size:.95rem;
+  font-family:var(--f-texto);cursor:pointer;
+  transition:border-color 180ms ease, background 180ms ease, color 180ms ease;
+}
+.btn-pri{background:var(--oro);color:var(--negro);border:1px solid var(--oro);}
+.btn-pri:hover{background:#d9b338;color:var(--negro);}
+.btn-sec{background:transparent;color:var(--hueso);border:1px solid var(--linea-hueso-fuerte);}
+.btn-sec:hover{border-color:var(--oro);color:var(--oro);}
+
+/* =====================================================================
+   5. SHELL DE PÁGINA INTERIOR
+   Fondo fijo + overlay medido. Las tres páginas de herramienta usan la
+   misma implementación y sólo cambian la imagen y la opacidad del velo.
+   ===================================================================== */
+.page-bg{
+  position:fixed;inset:0;z-index:-1;
+  background-size:cover;background-position:center;background-repeat:no-repeat;
+}
+.page-bg::after{content:'';position:absolute;inset:0;}
+
+/* Luminancia p95 medida por imagen: constructor 89, partida 89, listas 222.
+   Por eso listas lleva casi el doble de velo y además desatura. */
+.page-bg.bg-constructor{background-image:url('../img/bg/bg-constructor.jpg');}
+.page-bg.bg-constructor::after{background:rgba(20,17,14,.55);}
+
+.page-bg.bg-partida{background-image:url('../img/bg/bg-partida.jpg');}
+.page-bg.bg-partida::after{background:rgba(20,17,14,.68);}
+
+.page-bg.bg-listas{background-image:url('../img/bg/bg-listas.jpg');filter:saturate(.65);}
+.page-bg.bg-listas::after{background:rgba(20,17,14,.84);}
+
+/* El contenido siempre por encima del fondo fijo */
+.page{position:relative;z-index:1;padding-top:92px;min-height:100vh;}
+.wrap{max-width:1180px;margin:0 auto;padding:0 5%;}
+.wrap-wide{max-width:1420px;margin:0 auto;padding:0 5%;}
+
+.page-head{padding:34px 0 26px;}
+.page-head h1{
+  font-size:clamp(1.9rem,3.4vw,2.9rem);
+  text-transform:uppercase;margin-bottom:10px;
+}
+.page-head .lead{
+  color:var(--txt-suave);max-width:62ch;margin:0;
+  font-size:1.02rem;
+}
+.page-head .kicker{
+  display:flex;align-items:center;gap:14px;margin-bottom:16px;
+}
+.page-head .kicker span:last-child{
+  font-size:.78rem;text-transform:uppercase;letter-spacing:var(--ls-kicker);
+  color:var(--oro);font-weight:500;
+}
+.page-head .kicker i{display:block;width:28px;height:1px;background:var(--oro);flex:none;}
+
+/* =====================================================================
+   6. SECCIONES DE ATERRIZAJE (index.html)
+   ===================================================================== */
+.sec{padding:88px 0;border-top:1px solid var(--linea-oro);}
+.sec-head{margin-bottom:38px;}
+.sec-head h2{font-size:clamp(1.5rem,2.6vw,2.1rem);text-transform:uppercase;margin-bottom:12px;}
+.sec-head p{color:var(--txt-suave);max-width:64ch;margin:0;}
+
+.intro-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:52px;align-items:start;}
+.intro-grid p{color:var(--txt-suave);margin:0 0 16px;}
+.intro-facts{border-left:1px solid var(--linea-oro);padding-left:26px;}
+.intro-facts dl{margin:0;}
+.intro-facts dt{
+  font-size:.68rem;letter-spacing:var(--ls-lb);text-transform:uppercase;
+  color:var(--oro);margin-bottom:4px;
+}
+.intro-facts dd{
+  margin:0 0 18px;font-family:var(--f-titulo);font-size:1.15rem;color:var(--hueso);
+}
+.intro-facts dd:last-child{margin-bottom:0;}
+
+/* --- Secuencia de turno: diagrama horizontal --- */
+.turno{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;}
+.fase{
+  background:var(--panel);border:1px solid var(--linea-oro);border-radius:var(--r);
+  display:flex;flex-direction:column;
+}
+.fase>summary{
+  list-style:none;cursor:pointer;padding:18px 16px;display:block;
+  position:relative;transition:background 180ms ease;
+}
+.fase>summary::-webkit-details-marker{display:none;}
+.fase>summary:hover{background:rgba(201,162,39,.06);}
+.fase .n{
+  font-family:var(--f-titulo);font-size:.78rem;color:var(--oro);
+  display:block;margin-bottom:8px;letter-spacing:.1em;
+}
+.fase .t{
+  font-family:var(--f-titulo);font-size:1.02rem;color:var(--hueso);
+  text-transform:uppercase;letter-spacing:.04em;display:block;
+}
+.fase .mas{
+  position:absolute;right:16px;top:18px;color:var(--oro);
+  font-size:.9rem;transition:transform 200ms ease;
+}
+.fase[open] .mas{transform:rotate(45deg);}
+.fase .cuerpo{
+  padding:0 16px 18px;color:var(--txt-suave);font-size:.9rem;line-height:1.55;
+  border-top:1px solid var(--linea-hueso);margin-top:0;padding-top:14px;
+}
+
+/* --- Tres tarjetas de herramienta --- */
+.tools{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;}
+.tool{
+  position:relative;display:block;overflow:hidden;
+  border:1px solid var(--linea-oro);border-radius:var(--r);
+  min-height:250px;
+  background-size:cover;background-position:center;
+  transition:border-color 220ms ease;
+}
+.tool:hover{border-color:var(--linea-oro-fuerte);}
+.tool::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(0deg, rgba(20,17,14,.92) 0%, rgba(20,17,14,.55) 55%, rgba(20,17,14,.35) 100%);
+  transition:background 220ms ease;
+}
+.tool:hover::before{
+  background:linear-gradient(0deg, rgba(20,17,14,.95) 0%, rgba(20,17,14,.62) 55%, rgba(20,17,14,.42) 100%);
+}
+.tool-body{position:relative;z-index:1;padding:22px;display:flex;flex-direction:column;height:100%;justify-content:flex-end;min-height:250px;}
+.tool h3{font-size:1.22rem;text-transform:uppercase;margin-bottom:8px;}
+.tool p{margin:0 0 14px;color:var(--txt-suave);font-size:.88rem;line-height:1.5;}
+.tool .ir{font-size:.72rem;letter-spacing:var(--ls-lb);text-transform:uppercase;color:var(--oro);font-weight:500;}
+.tool.t-constructor{background-image:url('../img/bg/bg-constructor.jpg');}
+.tool.t-partida{background-image:url('../img/bg/bg-partida.jpg');}
+.tool.t-listas{background-image:url('../img/bg/bg-listas.jpg');}
+
+/* =====================================================================
+   7. FOOTER
+   ===================================================================== */
+.site-footer{
+  border-top:1px solid var(--linea-oro);
+  background:rgba(20,17,14,.92);
+  padding:56px 0 34px;
+  position:relative;z-index:1;
+}
+.foot-grid{
+  display:grid;grid-template-columns:minmax(0,1.4fr) repeat(2,minmax(0,1fr));
+  gap:40px;margin-bottom:40px;
+}
+.foot-brand .marca{
+  font-family:var(--f-titulo);font-size:1.3rem;letter-spacing:var(--ls-titulo);
+  color:var(--hueso);text-transform:uppercase;display:block;margin-bottom:12px;
+}
+.foot-brand p{color:var(--txt-dim);font-size:.86rem;margin:0 0 10px;max-width:44ch;line-height:1.55;}
+.foot-col h4{
+  font-size:.68rem;letter-spacing:var(--ls-lb);text-transform:uppercase;
+  color:var(--oro);margin-bottom:14px;font-family:var(--f-texto);font-weight:500;
+}
+.foot-col ul{list-style:none;margin:0;padding:0;}
+.foot-col li{margin-bottom:9px;}
+.foot-col a{color:var(--txt-suave);font-size:.88rem;}
+.foot-col a:hover{color:var(--oro);}
+.foot-legal{
+  border-top:1px solid var(--linea-hueso);padding-top:22px;
+  display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
+  color:var(--txt-tenue);font-size:.78rem;line-height:1.5;
+}
+.foot-legal p{margin:0;max-width:70ch;}
+
+/* =====================================================================
+   8. RESPONSIVE
+   Orden deliberado: los bloques más estrechos van al final para que
+   ganen la cascada frente a los rangos más anchos.
+   ===================================================================== */
+@media (min-width:768px) and (max-width:1279px){
+  .cv-textcol{width:53% !important;max-width:53% !important;}
+  .cv-video-layer{object-position:74% center !important;}
+}
+@media (min-width:768px){
+  .cv-hamburger-main{display:none;}
+}
+@media (max-width:1023px){
+  .intro-grid{grid-template-columns:1fr;gap:32px;}
+  .intro-facts{border-left:none;border-top:1px solid var(--linea-oro);padding-left:0;padding-top:24px;}
+  .turno{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .tools{grid-template-columns:1fr;}
+  .foot-grid{grid-template-columns:1fr;gap:30px;}
+}
+@media (max-width:899px){
+  .cv-nav-right{display:none !important;}
+  .cv-hamburger-right{display:flex !important;}
+}
+@media (min-width:900px){
+  .cv-hamburger-right{display:none;}
+}
+@media (min-width:900px) and (max-width:1199px){
+  .cv-nav-left,.cv-nav-right{gap:22px !important;}
+  .cv-navlink{font-size:.72rem !important;}
+}
+@media (max-width:767px){
+  .cv-video-layer{display:none !important;}
+  .cv-poster-bg{display:block !important;}
+  .cv-overlay-h,.cv-overlay-bottom{display:none !important;}
+  .cv-overlay-v{display:block !important;}
+  .cv-textcol{
+    left:0 !important;right:0 !important;width:100% !important;max-width:100% !important;
+    align-items:center !important;text-align:center !important;
+    bottom:8% !important;top:auto !important;transform:none !important;
+    padding:0 6%;
+  }
+  .cv-rule{margin-left:auto !important;margin-right:auto !important;}
+  .cv-kicker{justify-content:center !important;}
+  .cv-kicker-bar{display:none !important;}
+  .cv-ctas{flex-direction:column !important;width:100% !important;}
+  .cv-ctas a{width:100% !important;text-align:center !important;}
+  .cv-scrollcue{left:50% !important;transform:translateX(-50%) !important;align-items:center !important;}
+  .cv-nav-left{display:none !important;}
+  .cv-hamburger-right{display:none !important;}
+  .cv-hamburger-main{display:flex !important;}
+  .turno{grid-template-columns:1fr;}
+  .sec{padding:60px 0;}
+  .page{padding-top:80px;}
+}
+
+/* =====================================================================
+   9. MOVIMIENTO REDUCIDO
+   ===================================================================== */
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+  .cv-video-layer{display:none !important;}
+  .cv-poster-bg{display:block !important;}
+  .cv-scrollcue-line{animation:none !important;}
+  *,*::before,*::after{
+    animation-duration:.001ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.001ms !important;
+  }
+}

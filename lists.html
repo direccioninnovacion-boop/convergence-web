@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Listas guardadas &mdash; CONVERGENCE</title>
-<meta name="description" content="Guard&aacute;, compart&iacute; e imprim&iacute; tus listas de ej&eacute;rcito de Convergence.">
+<title>Saved lists &mdash; CONVERGENCE</title>
+<meta name="description" content="Save, share and print your Convergence army lists.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
@@ -14,52 +14,52 @@
 </head>
 <body>
 
-  <a class="skip" href="#main">Saltar al contenido</a>
+  <a class="skip" href="#main">Skip to content</a>
 
   <div class="cv-nav-scrim-top" aria-hidden="true"></div>
   <div class="cv-nav-scrim-right" aria-hidden="true"></div>
 
-  <nav class="cv-nav is-fixed" id="cv-nav" aria-label="Principal">
+  <nav class="cv-nav is-fixed" id="cv-nav" aria-label="Main">
     <div class="cv-nav-groups">
       <div class="cv-nav-left">
-        <a href="facciones.html" class="cv-navlink">Facciones</a>
-        <a href="campana.html" class="cv-navlink">Campa&ntilde;a</a>
-        <a href="perfiles.html" class="cv-navlink">Perfiles y reglas</a>
+        <a href="factions.html" class="cv-navlink">Factions</a>
+        <a href="campaign.html" class="cv-navlink">Campaign</a>
+        <a href="profiles.html" class="cv-navlink">Profiles &amp; rules</a>
       </div>
 
       <div class="cv-nav-right">
-        <a href="constructor.html" class="cv-navlink">Constructor</a>
-        <a href="partida.html" class="cv-navlink">Partida</a>
-        <a href="listas.html" class="cv-navlink">Listas</a>
+        <a href="builder.html" class="cv-navlink">Builder</a>
+        <a href="game.html" class="cv-navlink">Game</a>
+        <a href="lists.html" class="cv-navlink">Lists</a>
       </div>
 
       <button class="cv-hamburger cv-hamburger-right" id="cv-hamburger-right"
-              aria-label="Herramientas" aria-expanded="false" aria-controls="cv-menu-right">
+              aria-label="Tools" aria-expanded="false" aria-controls="cv-menu-right">
         <span></span><span></span><span></span>
       </button>
 
       <button class="cv-hamburger cv-hamburger-main" id="cv-hamburger-main"
-              aria-label="Men&uacute;" aria-expanded="false" aria-controls="cv-menu-main">
+              aria-label="Menu" aria-expanded="false" aria-controls="cv-menu-main">
         <span></span><span></span><span></span>
       </button>
     </div>
   </nav>
 
   <div class="cv-menu cv-menu-right" id="cv-menu-right">
-    <a href="constructor.html">Constructor</a>
-    <a href="partida.html">Partida</a>
-    <a href="listas.html">Listas</a>
+    <a href="builder.html">Builder</a>
+    <a href="game.html">Game</a>
+    <a href="lists.html">Lists</a>
   </div>
 
   <div class="cv-menu cv-menu-main" id="cv-menu-main">
-    <a href="index.html">Inicio</a>
-    <a href="facciones.html">Facciones</a>
-    <a href="campana.html">Campa&ntilde;a</a>
-    <a href="perfiles.html">Perfiles y reglas</a>
+    <a href="index.html">Home</a>
+    <a href="factions.html">Factions</a>
+    <a href="campaign.html">Campaign</a>
+    <a href="profiles.html">Profiles &amp; rules</a>
     <div class="cv-menu-divider" aria-hidden="true"></div>
-    <a href="constructor.html">Constructor</a>
-    <a href="partida.html">Partida</a>
-    <a href="listas.html">Listas</a>
+    <a href="builder.html">Builder</a>
+    <a href="game.html">Game</a>
+    <a href="lists.html">Lists</a>
   </div>
 
   <div class="page-bg bg-listas" aria-hidden="true"></div>
@@ -69,55 +69,55 @@
       <div class="wrap">
 
         <div class="page-head">
-          <div class="kicker"><i></i><span>Herramienta</span></div>
-          <h1>Listas guardadas</h1>
-          <p class="lead">Guard&aacute; la lista en este dispositivo, compartila con un
-            c&oacute;digo o imprim&iacute; la hoja para llevarla a la mesa.</p>
+          <div class="kicker"><i></i><span>Tool</span></div>
+          <h1>Saved lists</h1>
+          <p class="lead">Save the list on this device, share it with a code, or print the sheet
+            to take to the table.</p>
         </div>
 
         <div class="bld-bar">
           <div class="bld-band" aria-hidden="true"></div>
-          <div class="campo">
-            <label for="selFac">Facci&oacute;n</label>
+          <div class="field">
+            <label for="selFac">Faction</label>
             <select id="selFac" style="max-width:200px"></select>
           </div>
-          <div class="campo grow">
-            <label for="inName">Nombre de la lista</label>
-            <input id="inName" placeholder="Sin nombre">
+          <div class="field grow">
+            <label for="inName">List name</label>
+            <input id="inName" placeholder="Unnamed">
           </div>
-          <div class="campo">
-            <label for="inLimit">L&iacute;mite</label>
+          <div class="field">
+            <label for="inLimit">Limit</label>
             <input id="inLimit" type="number" min="0" value="600" style="width:96px">
           </div>
           <div class="bld-tot">
             <div class="big"><span id="ptNow">0</span><span class="sep">/</span><span id="ptLim">600</span></div>
-            <div class="sub"><span id="mdCount">0</span> modelos &middot; <span id="wbCount">0</span> warbands</div>
+            <div class="sub"><span id="mdCount">0</span> models &middot; <span id="wbCount">0</span> warbands</div>
           </div>
         </div>
 
         <div class="cols">
           <div>
             <div class="panel">
-              <h2>Guardar y exportar</h2>
+              <h2>Save and export</h2>
               <div class="pbody">
                 <div class="row wrap" style="margin-bottom:14px">
-                  <button class="btn pri" id="btnSave">Guardar lista</button>
-                  <button class="btn" id="btnNew">Lista nueva</button>
-                  <button class="btn" id="btnPrint">Hoja imprimible</button>
+                  <button class="btn pri" id="btnSave">Save list</button>
+                  <button class="btn" id="btnNew">New list</button>
+                  <button class="btn" id="btnPrint">Printable sheet</button>
                 </div>
-                <label class="lb" for="txtCode" style="display:block;margin-bottom:6px">C&oacute;digo para compartir</label>
+                <label class="lb" for="txtCode" style="display:block;margin-bottom:6px">Shareable code</label>
                 <textarea id="txtCode" rows="3"></textarea>
                 <div class="row wrap" style="margin-top:10px">
-                  <button class="btn sm" id="btnGenCode">Generar c&oacute;digo</button>
-                  <button class="btn sm" id="btnCopyCode">Copiar</button>
-                  <button class="btn sm" id="btnLoadCode">Cargar c&oacute;digo pegado</button>
+                  <button class="btn sm" id="btnGenCode">Generate code</button>
+                  <button class="btn sm" id="btnCopyCode">Copy</button>
+                  <button class="btn sm" id="btnLoadCode">Load pasted code</button>
                 </div>
               </div>
             </div>
           </div>
           <div>
             <div class="panel">
-              <h2>Guardadas en este dispositivo</h2>
+              <h2>Saved on this device</h2>
               <div class="pbody" id="savedList"></div>
             </div>
           </div>
@@ -133,34 +133,33 @@
     <div class="wrap">
       <div class="foot-grid">
         <div class="foot-brand">
-          <span class="marca">Convergence</span>
-          <p>Wargame de miniaturas por turnos. Ej&eacute;rcitos de mundos que nunca
-             debieron cruzarse, enfrentados sobre el mismo campo.</p>
+          <span class="brand">Convergence</span>
+          <p>A turn-based miniatures wargame. Armies from worlds that were never meant to
+             meet, facing each other across the same board.</p>
         </div>
         <div class="foot-col">
-          <h4>El juego</h4>
+          <h4>The game</h4>
           <ul>
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="facciones.html">Facciones</a></li>
-            <li><a href="campana.html">Campa&ntilde;a</a></li>
-            <li><a href="perfiles.html">Perfiles y reglas</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="factions.html">Factions</a></li>
+            <li><a href="campaign.html">Campaign</a></li>
+            <li><a href="profiles.html">Profiles &amp; rules</a></li>
           </ul>
         </div>
         <div class="foot-col">
-          <h4>Herramientas</h4>
+          <h4>Tools</h4>
           <ul>
-            <li><a href="constructor.html">Constructor de ej&eacute;rcitos</a></li>
-            <li><a href="partida.html">Seguimiento de partida</a></li>
-            <li><a href="listas.html">Listas guardadas</a></li>
+            <li><a href="builder.html">Army builder</a></li>
+            <li><a href="game.html">Game tracker</a></li>
+            <li><a href="lists.html">Saved lists</a></li>
           </ul>
         </div>
       </div>
       <div class="foot-legal">
-        <p>Proyecto de fans sin &aacute;nimo de lucro. No est&aacute; afiliado ni respaldado por
-           Games Workshop ni por Middle-earth Enterprises. Las reglas de referencia pertenecen
-           a sus respectivos propietarios; este sitio s&oacute;lo re&uacute;ne material propio y
-           herramientas de apoyo para jugar en mesa.</p>
-        <p>Contacto: <a href="mailto:convergence@ejemplo.org">convergence@ejemplo.org</a></p>
+        <p>A non-profit fan project. Not affiliated with or endorsed by Games Workshop or
+           Middle-earth Enterprises. The reference rules belong to their respective owners;
+           this site only gathers original material and support tools for tabletop play.</p>
+        <p>Contact: <a href="mailto:convergence@ejemplo.org">convergence@ejemplo.org</a></p>
       </div>
     </div>
   </footer>

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CONVERGENCE &mdash; Wargame de miniaturas</title>
-<meta name="description" content="Wargame de miniaturas por turnos. Arm&aacute; tu facci&oacute;n, eleg&iacute; tus h&eacute;roes y llev&aacute; la carga hasta la &uacute;ltima l&iacute;nea enemiga.">
+<title>CONVERGENCE &mdash; Miniatures wargame</title>
+<meta name="description" content="A turn-based miniatures wargame. Build your faction, pick your heroes and carry the charge to the enemy's last line.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
@@ -13,52 +13,52 @@
 </head>
 <body>
 
-  <a class="skip" href="#main">Saltar al contenido</a>
+  <a class="skip" href="#main">Skip to content</a>
 
   <div class="cv-nav-scrim-top" aria-hidden="true"></div>
   <div class="cv-nav-scrim-right" aria-hidden="true"></div>
 
-  <nav class="cv-nav" id="cv-nav" aria-label="Principal">
+  <nav class="cv-nav" id="cv-nav" aria-label="Main">
     <div class="cv-nav-groups">
       <div class="cv-nav-left">
-        <a href="facciones.html" class="cv-navlink">Facciones</a>
-        <a href="campana.html" class="cv-navlink">Campa&ntilde;a</a>
-        <a href="perfiles.html" class="cv-navlink">Perfiles y reglas</a>
+        <a href="factions.html" class="cv-navlink">Factions</a>
+        <a href="campaign.html" class="cv-navlink">Campaign</a>
+        <a href="profiles.html" class="cv-navlink">Profiles &amp; rules</a>
       </div>
 
       <div class="cv-nav-right">
-        <a href="constructor.html" class="cv-navlink">Constructor</a>
-        <a href="partida.html" class="cv-navlink">Partida</a>
-        <a href="listas.html" class="cv-navlink">Listas</a>
+        <a href="builder.html" class="cv-navlink">Builder</a>
+        <a href="game.html" class="cv-navlink">Game</a>
+        <a href="lists.html" class="cv-navlink">Lists</a>
       </div>
 
       <button class="cv-hamburger cv-hamburger-right" id="cv-hamburger-right"
-              aria-label="Herramientas" aria-expanded="false" aria-controls="cv-menu-right">
+              aria-label="Tools" aria-expanded="false" aria-controls="cv-menu-right">
         <span></span><span></span><span></span>
       </button>
 
       <button class="cv-hamburger cv-hamburger-main" id="cv-hamburger-main"
-              aria-label="Men&uacute;" aria-expanded="false" aria-controls="cv-menu-main">
+              aria-label="Menu" aria-expanded="false" aria-controls="cv-menu-main">
         <span></span><span></span><span></span>
       </button>
     </div>
   </nav>
 
   <div class="cv-menu cv-menu-right" id="cv-menu-right">
-    <a href="constructor.html">Constructor</a>
-    <a href="partida.html">Partida</a>
-    <a href="listas.html">Listas</a>
+    <a href="builder.html">Builder</a>
+    <a href="game.html">Game</a>
+    <a href="lists.html">Lists</a>
   </div>
 
   <div class="cv-menu cv-menu-main" id="cv-menu-main">
-    <a href="index.html">Inicio</a>
-    <a href="facciones.html">Facciones</a>
-    <a href="campana.html">Campa&ntilde;a</a>
-    <a href="perfiles.html">Perfiles y reglas</a>
+    <a href="index.html">Home</a>
+    <a href="factions.html">Factions</a>
+    <a href="campaign.html">Campaign</a>
+    <a href="profiles.html">Profiles &amp; rules</a>
     <div class="cv-menu-divider" aria-hidden="true"></div>
-    <a href="constructor.html">Constructor</a>
-    <a href="partida.html">Partida</a>
-    <a href="listas.html">Listas</a>
+    <a href="builder.html">Builder</a>
+    <a href="game.html">Game</a>
+    <a href="lists.html">Lists</a>
   </div>
 
   <section class="cv-hero">
@@ -83,153 +83,151 @@
     <div class="cv-textcol">
       <div class="cv-kicker">
         <span class="cv-kicker-bar" aria-hidden="true"></span>
-        <span class="cv-kicker-text">Wargame de miniaturas &middot; Batallas por turnos</span>
+        <span class="cv-kicker-text">Miniatures wargame &middot; Turn-based battles</span>
       </div>
 
       <h1 class="cv-title">CONVERGENCE</h1>
 
       <div class="cv-rule" aria-hidden="true"></div>
 
-      <p class="cv-tagline">Ej&eacute;rcitos de mundos que nunca debieron cruzarse, enfrentados
-        sobre el mismo campo. Arm&aacute; tu facci&oacute;n, eleg&iacute; tus h&eacute;roes y
-        llev&aacute; la carga hasta la &uacute;ltima l&iacute;nea enemiga.</p>
+      <p class="cv-tagline">Armies from worlds that were never meant to meet, facing each
+        other across the same board. Build your faction, pick your heroes and carry the
+        charge to the enemy's last line.</p>
 
       <div class="cv-ctas">
-        <a href="#como-se-juega" class="btn-pri">C&oacute;mo se juega</a>
-        <a href="facciones.html" class="btn-sec">Ver las facciones</a>
+        <a href="#how-to-play" class="btn-pri">How to play</a>
+        <a href="factions.html" class="btn-sec">See the factions</a>
       </div>
     </div>
 
     <div class="cv-scrollcue" aria-hidden="true">
       <span class="cv-scrollcue-line"></span>
-      <span class="cv-scrollcue-label">EXPLORAR</span>
+      <span class="cv-scrollcue-label">EXPLORE</span>
     </div>
   </section>
 
   <main id="main">
 
-    <!-- ============ QU&Eacute; ES ============ -->
-    <section class="sec" id="como-se-juega">
+    <!-- ============ WHAT IT IS ============ -->
+    <section class="sec" id="how-to-play">
       <div class="wrap">
         <div class="sec-head">
-          <h2>Qu&eacute; es Convergence</h2>
+          <h2>What Convergence is</h2>
         </div>
         <div class="intro-grid">
           <div>
-            <p>Convergence es un wargame de miniaturas por turnos que se juega sobre una mesa
-              con terreno. Cada jugador lleva un ej&eacute;rcito construido con un l&iacute;mite
-              de puntos acordado, repartido en <b>warbands</b>: un h&eacute;roe al mando y las
-              tropas que lo siguen.</p>
-            <p>El sistema es el del Middle-earth Strategy Battle Game (Rules Manual 2024). Cada
-              turno se decide la Prioridad con un dado, y a partir de ah&iacute; se mueve, se
-              dispara y se resuelven los combates. Los h&eacute;roes gastan Poder, Voluntad y
-              Destino para torcer las tiradas en el momento justo: esa es la moneda que decide
-              las partidas.</p>
-            <p>No hace falta comprar nada para empezar a probar: el
-              <a href="constructor.html">constructor</a> arma listas legales, el
-              <a href="perfiles.html">listado de perfiles</a> tiene todas las
-              estad&iacute;sticas y el <a href="partida.html">seguimiento de partida</a>
-              lleva las bajas y los recursos por vos.</p>
+            <p>Convergence is a turn-based miniatures wargame played on a table with terrain.
+              Each player fields an army built to an agreed points limit, split into
+              <b>warbands</b>: a hero in command and the warriors who follow them.</p>
+            <p>The system is the Middle-earth Strategy Battle Game (Rules Manual 2024). Each
+              turn you roll a dice for Priority, and from there you Move, Shoot and resolve
+              Combats. Heroes spend Might, Will and Fate to bend the dice at the right
+              moment: that is the currency that decides games.</p>
+            <p>You do not need to buy anything to start trying it out: the
+              <a href="builder.html">army builder</a> puts together legal lists, the
+              <a href="profiles.html">profile list</a> carries every statistic, and the
+              <a href="game.html">game tracker</a> keeps count of casualties and resources
+              for you.</p>
           </div>
           <div class="intro-facts">
             <dl>
-              <dt>Jugadores</dt>
+              <dt>Players</dt>
               <dd>2</dd>
-              <dt>Duraci&oacute;n</dt>
+              <dt>Length</dt>
               <dd>60&ndash;120 min</dd>
-              <dt>Tama&ntilde;o de partida</dt>
-              <dd>400&ndash;800 puntos</dd>
-              <dt>Qu&eacute; hace falta</dt>
-              <dd>Miniaturas, dados de 6 caras, cinta m&eacute;trica y una mesa con terreno</dd>
+              <dt>Game size</dt>
+              <dd>400&ndash;800 points</dd>
+              <dt>What you need</dt>
+              <dd>Miniatures, six-sided dice, a tape measure and a table with terrain</dd>
             </dl>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ============ SECUENCIA DE TURNO ============ -->
+    <!-- ============ TURN SEQUENCE ============ -->
     <section class="sec">
       <div class="wrap">
         <div class="sec-head">
-          <h2>La secuencia de turno</h2>
-          <p>Cinco fases, siempre en el mismo orden. Toc&aacute; cualquiera para ver el resumen.</p>
+          <h2>The turn sequence</h2>
+          <p>Five phases, always in the same order. Tap any of them for the summary.</p>
         </div>
-        <div class="turno">
-        <details class="fase">
+        <div class="turn">
+        <details class="phase">
           <summary>
             <span class="n">01</span>
-            <span class="t">Prioridad</span>
-            <span class="mas" aria-hidden="true">+</span>
+            <span class="t">Priority</span>
+            <span class="plus" aria-hidden="true">+</span>
           </summary>
-          <div class="cuerpo">Ambos jugadores tiran 1D6. Quien saque m&aacute;s obtiene la Prioridad y mueve primero durante todo el turno. En caso de empate, la Prioridad pasa al jugador que <em>no</em> la tuvo en el turno anterior. Es la tirada que decide qui&eacute;n carga y qui&eacute;n recibe: casi todo el turno se juega desde aqu&iacute;.</div>
+          <div class="phase-body">Both players roll a D6. Whoever rolls higher gains Priority and moves first for the whole turn. On a tie, Priority passes to the player who did <em>not</em> have it the previous turn. It is the roll that decides who charges and who receives: almost the whole turn is played from here.</div>
         </details>
-        <details class="fase">
+        <details class="phase">
           <summary>
             <span class="n">02</span>
-            <span class="t">Movimiento</span>
-            <span class="mas" aria-hidden="true">+</span>
+            <span class="t">Move</span>
+            <span class="plus" aria-hidden="true">+</span>
           </summary>
-          <div class="cuerpo">El jugador con Prioridad mueve todos sus modelos, y despu&eacute;s lo hace el rival. Cada modelo se mueve hasta su valor de Mv. Mover a contacto con un enemigo es una Carga y traba a ambos en combate. Aqu&iacute; se declaran tambi&eacute;n las Acciones Heroicas de movimiento, como la Marcha Heroica.</div>
+          <div class="phase-body">The player with Priority moves all their models, then their opponent does the same. Each model moves up to its Move Value. Moving into contact with an enemy is a Charge and Engages both models in Combat. Movement Heroic Actions, such as Heroic March, are declared here too.</div>
         </details>
-        <details class="fase">
+        <details class="phase">
           <summary>
             <span class="n">03</span>
-            <span class="t">Disparo</span>
-            <span class="mas" aria-hidden="true">+</span>
+            <span class="t">Shoot</span>
+            <span class="plus" aria-hidden="true">+</span>
           </summary>
-          <div class="cuerpo">El jugador con Prioridad dispara primero. Se necesita l&iacute;nea de visi&oacute;n y el objetivo no puede estar trabado en combate. Se tira contra el valor de Fv del tirador y luego se tira para herir contra la Defensa del objetivo. Los modelos con arco est&aacute;n limitados a un tercio de tus guerreros.</div>
+          <div class="phase-body">The player with Priority shoots first. You need Line of Sight and the target cannot be Engaged in Combat. Roll against the shooter's Shoot Value, then roll To Wound against the target's Defence. Models with bows are limited to one third of your warriors.</div>
         </details>
-        <details class="fase">
+        <details class="phase">
           <summary>
             <span class="n">04</span>
-            <span class="t">Combate</span>
-            <span class="mas" aria-hidden="true">+</span>
+            <span class="t">Fight</span>
+            <span class="plus" aria-hidden="true">+</span>
           </summary>
-          <div class="cuerpo">Se resuelven todos los combates trabados, empezando por el que elija quien tiene la Prioridad. Cada bando tira sus dados de duelo; el ganador golpea. Despu&eacute;s se tira para herir cruzando Fuerza contra Defensa. Los h&eacute;roes pueden gastar Poder para modificar el duelo y declarar Ataques o Golpes Heroicos.</div>
+          <div class="phase-body">All Engaged Combats are resolved, starting with the one chosen by the player with Priority. Each side makes its Duel Roll; the winner makes Strikes. Then you roll To Wound, cross-referencing Strength against Defence. Heroes can spend Might to modify the Duel Roll and to declare Heroic Actions such as Heroic Strike.</div>
         </details>
-        <details class="fase">
+        <details class="phase">
           <summary>
             <span class="n">05</span>
-            <span class="t">Fin</span>
-            <span class="mas" aria-hidden="true">+</span>
+            <span class="t">End</span>
+            <span class="plus" aria-hidden="true">+</span>
           </summary>
-          <div class="cuerpo">Se comprueban los efectos de fin de turno y el estado del ej&eacute;rcito. Cuando un bando queda por debajo del 50&nbsp;% de sus modelos iniciales queda Roto: a partir de ah&iacute; cada modelo que quiera moverse debe superar una Prueba de Coraje. La partida puede terminar al bajar del 25&nbsp;%.</div>
+          <div class="phase-body">End-of-turn effects and the state of the army are checked. When a side drops below 50&nbsp;% of its starting models it is Broken: from then on every model that wishes to Move must pass a Courage Test. The game may end when it drops below 25&nbsp;%.</div>
         </details>
         </div>
       </div>
     </section>
 
-    <!-- ============ HERRAMIENTAS ============ -->
+    <!-- ============ TOOLS ============ -->
     <section class="sec">
       <div class="wrap">
         <div class="sec-head">
-          <h2>Herramientas de mesa</h2>
-          <p>Tres pantallas que comparten la misma lista. Lo que arm&aacute;s en el constructor
-             aparece en la partida sin volver a cargarlo.</p>
+          <h2>Table tools</h2>
+          <p>Three screens sharing the same list. What you build in the army builder shows up
+             in the game tracker without loading it again.</p>
         </div>
         <div class="tools">
-          <a class="tool t-constructor" href="constructor.html">
+          <a class="tool t-constructor" href="builder.html">
             <div class="tool-body">
-              <h3>Constructor</h3>
-              <p>Arm&aacute; warbands, sum&aacute; equipo y control&aacute; el l&iacute;mite de
-                 puntos. Valida las reglas de composici&oacute;n mientras escrib&iacute;s.</p>
-              <span class="ir">Abrir el constructor &rarr;</span>
+              <h3>Builder</h3>
+              <p>Build warbands, add wargear and keep an eye on the points limit. It validates
+                 the army composition rules as you go.</p>
+              <span class="go">Open the builder &rarr;</span>
             </div>
           </a>
-          <a class="tool t-partida" href="partida.html">
+          <a class="tool t-partida" href="game.html">
             <div class="tool-body">
-              <h3>Partida</h3>
-              <p>Lleva las heridas, el Poder, la Voluntad y el Destino de cada h&eacute;roe, y te
-                 avisa cuando el ej&eacute;rcito se Rompe.</p>
-              <span class="ir">Abrir el seguimiento &rarr;</span>
+              <h3>Game</h3>
+              <p>Tracks the Wounds, Might, Will and Fate of every hero, and warns you when the
+                 army is Broken.</p>
+              <span class="go">Open the tracker &rarr;</span>
             </div>
           </a>
-          <a class="tool t-listas" href="listas.html">
+          <a class="tool t-listas" href="lists.html">
             <div class="tool-body">
-              <h3>Listas</h3>
-              <p>Guard&aacute; ej&eacute;rcitos en este dispositivo, compartilos con un
-                 c&oacute;digo o imprim&iacute; la hoja para la mesa.</p>
-              <span class="ir">Abrir las listas &rarr;</span>
+              <h3>Lists</h3>
+              <p>Save armies on this device, share them with a code, or print the sheet for
+                 the table.</p>
+              <span class="go">Open the lists &rarr;</span>
             </div>
           </a>
         </div>
@@ -240,11 +238,11 @@
 
   <script>
   /* ---------------------------------------------------------------
-     Bucle del hero por crossfade.
-     El clip no cierra sobre s&iacute; mismo (la c&aacute;mara hace un
-     acercamiento continuo), as&iacute; que un <video loop> dar&iacute;a un
-     salto visible. Dos capas superpuestas se turnan con un fundido de
-     opacidad de 1 s conducido por requestAnimationFrame.
+     Hero loop by crossfade.
+     The clip does not close on itself (the camera pushes in
+     continuously), so a <video loop> would produce a visible jump.
+     Two stacked layers take turns with a 1 s opacity fade driven by
+     requestAnimationFrame.
      --------------------------------------------------------------- */
   (function(){
     var DUR = 4.5, FADE = 1.0;
@@ -289,34 +287,33 @@
     <div class="wrap">
       <div class="foot-grid">
         <div class="foot-brand">
-          <span class="marca">Convergence</span>
-          <p>Wargame de miniaturas por turnos. Ej&eacute;rcitos de mundos que nunca
-             debieron cruzarse, enfrentados sobre el mismo campo.</p>
+          <span class="brand">Convergence</span>
+          <p>A turn-based miniatures wargame. Armies from worlds that were never meant to
+             meet, facing each other across the same board.</p>
         </div>
         <div class="foot-col">
-          <h4>El juego</h4>
+          <h4>The game</h4>
           <ul>
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="facciones.html">Facciones</a></li>
-            <li><a href="campana.html">Campa&ntilde;a</a></li>
-            <li><a href="perfiles.html">Perfiles y reglas</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="factions.html">Factions</a></li>
+            <li><a href="campaign.html">Campaign</a></li>
+            <li><a href="profiles.html">Profiles &amp; rules</a></li>
           </ul>
         </div>
         <div class="foot-col">
-          <h4>Herramientas</h4>
+          <h4>Tools</h4>
           <ul>
-            <li><a href="constructor.html">Constructor de ej&eacute;rcitos</a></li>
-            <li><a href="partida.html">Seguimiento de partida</a></li>
-            <li><a href="listas.html">Listas guardadas</a></li>
+            <li><a href="builder.html">Army builder</a></li>
+            <li><a href="game.html">Game tracker</a></li>
+            <li><a href="lists.html">Saved lists</a></li>
           </ul>
         </div>
       </div>
       <div class="foot-legal">
-        <p>Proyecto de fans sin &aacute;nimo de lucro. No est&aacute; afiliado ni respaldado por
-           Games Workshop ni por Middle-earth Enterprises. Las reglas de referencia pertenecen
-           a sus respectivos propietarios; este sitio s&oacute;lo re&uacute;ne material propio y
-           herramientas de apoyo para jugar en mesa.</p>
-        <p>Contacto: <a href="mailto:convergence@ejemplo.org">convergence@ejemplo.org</a></p>
+        <p>A non-profit fan project. Not affiliated with or endorsed by Games Workshop or
+           Middle-earth Enterprises. The reference rules belong to their respective owners;
+           this site only gathers original material and support tools for tabletop play.</p>
+        <p>Contact: <a href="mailto:convergence@ejemplo.org">convergence@ejemplo.org</a></p>
       </div>
     </div>
   </footer>

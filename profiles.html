@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Perfiles y reglas &mdash; CONVERGENCE</title>
-<meta name="description" content="Todas las estad&iacute;sticas, reglas especiales y opciones de los perfiles de Convergence, con buscador y filtros.">
+<title>Profiles &amp; rules &mdash; CONVERGENCE</title>
+<meta name="description" content="Every statistic, special rule and wargear option in the Convergence profiles, with search and filters.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
@@ -15,52 +15,52 @@
 </head>
 <body>
 
-  <a class="skip" href="#main">Saltar al contenido</a>
+  <a class="skip" href="#main">Skip to content</a>
 
   <div class="cv-nav-scrim-top" aria-hidden="true"></div>
   <div class="cv-nav-scrim-right" aria-hidden="true"></div>
 
-  <nav class="cv-nav is-fixed" id="cv-nav" aria-label="Principal">
+  <nav class="cv-nav is-fixed" id="cv-nav" aria-label="Main">
     <div class="cv-nav-groups">
       <div class="cv-nav-left">
-        <a href="facciones.html" class="cv-navlink">Facciones</a>
-        <a href="campana.html" class="cv-navlink">Campa&ntilde;a</a>
-        <a href="perfiles.html" class="cv-navlink">Perfiles y reglas</a>
+        <a href="factions.html" class="cv-navlink">Factions</a>
+        <a href="campaign.html" class="cv-navlink">Campaign</a>
+        <a href="profiles.html" class="cv-navlink">Profiles &amp; rules</a>
       </div>
 
       <div class="cv-nav-right">
-        <a href="constructor.html" class="cv-navlink">Constructor</a>
-        <a href="partida.html" class="cv-navlink">Partida</a>
-        <a href="listas.html" class="cv-navlink">Listas</a>
+        <a href="builder.html" class="cv-navlink">Builder</a>
+        <a href="game.html" class="cv-navlink">Game</a>
+        <a href="lists.html" class="cv-navlink">Lists</a>
       </div>
 
       <button class="cv-hamburger cv-hamburger-right" id="cv-hamburger-right"
-              aria-label="Herramientas" aria-expanded="false" aria-controls="cv-menu-right">
+              aria-label="Tools" aria-expanded="false" aria-controls="cv-menu-right">
         <span></span><span></span><span></span>
       </button>
 
       <button class="cv-hamburger cv-hamburger-main" id="cv-hamburger-main"
-              aria-label="Men&uacute;" aria-expanded="false" aria-controls="cv-menu-main">
+              aria-label="Menu" aria-expanded="false" aria-controls="cv-menu-main">
         <span></span><span></span><span></span>
       </button>
     </div>
   </nav>
 
   <div class="cv-menu cv-menu-right" id="cv-menu-right">
-    <a href="constructor.html">Constructor</a>
-    <a href="partida.html">Partida</a>
-    <a href="listas.html">Listas</a>
+    <a href="builder.html">Builder</a>
+    <a href="game.html">Game</a>
+    <a href="lists.html">Lists</a>
   </div>
 
   <div class="cv-menu cv-menu-main" id="cv-menu-main">
-    <a href="index.html">Inicio</a>
-    <a href="facciones.html">Facciones</a>
-    <a href="campana.html">Campa&ntilde;a</a>
-    <a href="perfiles.html">Perfiles y reglas</a>
+    <a href="index.html">Home</a>
+    <a href="factions.html">Factions</a>
+    <a href="campaign.html">Campaign</a>
+    <a href="profiles.html">Profiles &amp; rules</a>
     <div class="cv-menu-divider" aria-hidden="true"></div>
-    <a href="constructor.html">Constructor</a>
-    <a href="partida.html">Partida</a>
-    <a href="listas.html">Listas</a>
+    <a href="builder.html">Builder</a>
+    <a href="game.html">Game</a>
+    <a href="lists.html">Lists</a>
   </div>
 
   <div class="page-bg bg-listas" aria-hidden="true"></div>
@@ -70,93 +70,92 @@
       <div class="wrap-wide">
 
         <div class="page-head">
-          <div class="kicker"><i></i><span>Datos</span></div>
-          <h1>Perfiles y reglas</h1>
-          <p class="lead">Todas las estad&iacute;sticas del juego, le&iacute;das directamente de
-            la misma fuente que usa el constructor. Filtr&aacute;, orden&aacute; y abr&iacute;
-            cualquier perfil para ver su ficha completa.</p>
+          <div class="kicker"><i></i><span>Data</span></div>
+          <h1>Profiles &amp; rules</h1>
+          <p class="lead">Every statistic in the game, read straight from the same source the
+            army builder uses. Filter, sort and open any profile to see its full card.</p>
         </div>
 
-        <div class="panel filtros">
+        <div class="panel filters">
           <div class="pbody">
-            <div class="filtro-grid">
-              <div class="campo">
-                <label for="fFac">Facci&oacute;n</label>
-                <select id="fFac"></select>
+            <div class="filter-grid">
+              <div class="field">
+                <label for="filterFaction">Faction</label>
+                <select id="filterFaction"></select>
               </div>
-              <div class="campo">
-                <label for="fTipo">Tipo</label>
-                <select id="fTipo">
-                  <option value="">Todos</option>
-                  <option value="hero">H&eacute;roes</option>
-                  <option value="war">Tropas</option>
-                  <option value="mount">Monturas</option>
+              <div class="field">
+                <label for="filterType">Type</label>
+                <select id="filterType">
+                  <option value="">All</option>
+                  <option value="hero">Heroes</option>
+                  <option value="war">Warriors</option>
+                  <option value="mount">Mounts</option>
                 </select>
               </div>
-              <div class="campo">
-                <label for="fTier">Rango heroico</label>
-                <select id="fTier"></select>
+              <div class="field">
+                <label for="filterTier">Heroic Tier</label>
+                <select id="filterTier"></select>
               </div>
-              <div class="campo">
-                <label for="fCoste">Coste m&aacute;ximo: <span id="fCosteVal">&mdash;</span> pts</label>
-                <input type="range" id="fCoste" min="0" max="200" step="1">
+              <div class="field">
+                <label for="filterCost">Maximum cost: <span id="filterCostVal">&mdash;</span> pts</label>
+                <input type="range" id="filterCost" min="0" max="200" step="1">
               </div>
-              <div class="campo campo-busq">
-                <label for="fBusq">Buscar</label>
-                <input type="search" id="fBusq" placeholder="Nombre, regla, palabra clave&hellip;">
+              <div class="field field-search">
+                <label for="filterSearch">Search</label>
+                <input type="search" id="filterSearch" placeholder="Name, rule, keyword&hellip;">
               </div>
-              <div class="campo campo-reset">
-                <button class="btn" id="fReset">Limpiar</button>
+              <div class="field field-reset">
+                <button class="btn" id="filterReset">Clear</button>
               </div>
             </div>
-            <div class="filtro-info" id="fInfo"></div>
+            <div class="filter-info" id="filterInfo"></div>
           </div>
         </div>
 
         <div class="panel">
           <div class="tabla-scroll">
-            <table class="perfiles" id="tablaPerfiles">
+            <table class="perfiles" id="profilesTable">
               <thead>
                 <tr>
-                  <th class="col-nm" data-sort="name">Perfil</th>
-                  <th data-sort="cost">Coste</th>
-                  <th data-sort="mv" title="Movimiento">Mv</th>
-                  <th data-sort="fv" title="Valor de Combate">Fv</th>
-                  <th data-sort="sv" title="Valor de Disparo">Sv</th>
-                  <th data-sort="s" title="Fuerza">S</th>
-                  <th data-sort="d" title="Defensa">D</th>
-                  <th data-sort="a" title="Ataques">A</th>
-                  <th data-sort="w" title="Heridas">W</th>
-                  <th data-sort="c" title="Coraje">C</th>
-                  <th data-sort="i" title="Intuici&oacute;n">I</th>
-                  <th data-sort="might" title="Poder">Poder</th>
-                  <th data-sort="will" title="Voluntad">Vol.</th>
-                  <th data-sort="fate" title="Destino">Dest.</th>
+                  <th class="col-nm" data-sort="name">Profile</th>
+                  <th data-sort="cost">Cost</th>
+                  <th data-sort="mv" title="Move">Mv</th>
+                  <th data-sort="fv" title="Fight Value">Fv</th>
+                  <th data-sort="sv" title="Shoot Value">Sv</th>
+                  <th data-sort="s" title="Strength">S</th>
+                  <th data-sort="d" title="Defence">D</th>
+                  <th data-sort="a" title="Attacks">A</th>
+                  <th data-sort="w" title="Wounds">W</th>
+                  <th data-sort="c" title="Courage">C</th>
+                  <th data-sort="i" title="Intelligence">I</th>
+                  <th data-sort="might" title="Might">Might</th>
+                  <th data-sort="will" title="Will">Will</th>
+                  <th data-sort="fate" title="Fate">Fate</th>
                 </tr>
               </thead>
-              <tbody id="cuerpoPerfiles"></tbody>
+              <tbody id="profilesBody"></tbody>
             </table>
           </div>
         </div>
 
-        <div class="glosario">
+        <div class="glossary">
           <div>
-            <h2>Glosario de reglas especiales</h2>
-            <p>Las reglas que aparecen en las fichas est&aacute;n descritas en detalle en el
-              documento de reglas especiales del Rules Manual 2024.</p>
+            <h2>Special rules glossary</h2>
+            <p>The rules that appear on the profile cards are described in full in the special
+              rules document transcribed from the Rules Manual 2024.</p>
           </div>
-          <a class="btn-sec" href="../Reglas/Reglas_Especiales_MESBG_2024.md">Abrir el glosario</a>
+          <a class="btn-sec" href="docs/special-rules.md">Open the glossary</a>
         </div>
 
       </div>
     </main>
   </div>
 
-  <!-- Ficha completa -->
-  <div class="ficha-fondo" id="fichaFondo" hidden>
-    <div class="ficha" id="ficha" role="dialog" aria-modal="true" aria-labelledby="fichaTitulo">
-      <button class="ficha-cerrar" id="fichaCerrar" aria-label="Cerrar ficha">&times;</button>
-      <div class="ficha-cuerpo" id="fichaCuerpo"></div>
+  <!-- Full profile card -->
+  <div class="card-backdrop" id="cardBackdrop" hidden>
+    <div class="card" id="card" role="dialog" aria-modal="true" aria-labelledby="cardTitle">
+      <button class="card-close" id="cardClose" aria-label="Close card">&times;</button>
+      <div class="card-body" id="cardBody"></div>
     </div>
   </div>
 
@@ -164,34 +163,33 @@
     <div class="wrap">
       <div class="foot-grid">
         <div class="foot-brand">
-          <span class="marca">Convergence</span>
-          <p>Wargame de miniaturas por turnos. Ej&eacute;rcitos de mundos que nunca
-             debieron cruzarse, enfrentados sobre el mismo campo.</p>
+          <span class="brand">Convergence</span>
+          <p>A turn-based miniatures wargame. Armies from worlds that were never meant to
+             meet, facing each other across the same board.</p>
         </div>
         <div class="foot-col">
-          <h4>El juego</h4>
+          <h4>The game</h4>
           <ul>
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="facciones.html">Facciones</a></li>
-            <li><a href="campana.html">Campa&ntilde;a</a></li>
-            <li><a href="perfiles.html">Perfiles y reglas</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="factions.html">Factions</a></li>
+            <li><a href="campaign.html">Campaign</a></li>
+            <li><a href="profiles.html">Profiles &amp; rules</a></li>
           </ul>
         </div>
         <div class="foot-col">
-          <h4>Herramientas</h4>
+          <h4>Tools</h4>
           <ul>
-            <li><a href="constructor.html">Constructor de ej&eacute;rcitos</a></li>
-            <li><a href="partida.html">Seguimiento de partida</a></li>
-            <li><a href="listas.html">Listas guardadas</a></li>
+            <li><a href="builder.html">Army builder</a></li>
+            <li><a href="game.html">Game tracker</a></li>
+            <li><a href="lists.html">Saved lists</a></li>
           </ul>
         </div>
       </div>
       <div class="foot-legal">
-        <p>Proyecto de fans sin &aacute;nimo de lucro. No est&aacute; afiliado ni respaldado por
-           Games Workshop ni por Middle-earth Enterprises. Las reglas de referencia pertenecen
-           a sus respectivos propietarios; este sitio s&oacute;lo re&uacute;ne material propio y
-           herramientas de apoyo para jugar en mesa.</p>
-        <p>Contacto: <a href="mailto:convergence@ejemplo.org">convergence@ejemplo.org</a></p>
+        <p>A non-profit fan project. Not affiliated with or endorsed by Games Workshop or
+           Middle-earth Enterprises. The reference rules belong to their respective owners;
+           this site only gathers original material and support tools for tabletop play.</p>
+        <p>Contact: <a href="mailto:convergence@ejemplo.org">convergence@ejemplo.org</a></p>
       </div>
     </div>
   </footer>

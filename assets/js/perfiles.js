@@ -1,7 +1,7 @@
 /* =====================================================================
-   CONVERGENCE — PERFILES Y REGLAS
-   Vista pública de los datos. Lee TODO de data.js (FACTIONS, TIERS,
-   IMGS): ningún perfil está escrito a mano en el HTML.
+   CONVERGENCE — PROFILES AND RULES
+   Public view of the data. Reads EVERYTHING from data.js (FACTIONS,
+   TIERS, IMGS): no profile is hand-written in the HTML.
    ===================================================================== */
 (function(){
   "use strict";
@@ -9,99 +9,99 @@
   const $  = s => document.querySelector(s);
   const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
-  /* ---------- Aplanado: una fila por perfil ----------
-     Héroes, tropas y monturas comparten tabla; lo que no aplica queda vacío. */
-  function filas(){
+  /* ---------- Flattening: one row per profile ----------
+     Heroes, warriors and mounts share one table; what does not apply is left blank. */
+  function rows(){
     const out = [];
-    const montura = {};   // clave de MOUNTS -> {fac, cost} de quien la ofrece
+    const mountMap = {};   // MOUNTS key -> {fac, cost} of whoever offers it
 
     Object.values(FACTIONS).forEach(f => {
       (f.heroes || []).forEach(h => {
         out.push({
-          def:h, fac:f, tipo:"hero",
-          tier:h.tier, tierNom:TIERS[h.tier] ? TIERS[h.tier].es : "",
+          def:h, faction:f, type:"hero",
+          tier:h.tier, tierName:TIERS[h.tier] ? TIERS[h.tier].name : "",
           rank:TIERS[h.tier] ? TIERS[h.tier].rank : 0
         });
-        /* Una montura no tiene coste propio: lo pone la opción que la ofrece */
+        /* A mount has no cost of its own: it comes from the option that offers it */
         (h.options || []).forEach(o => {
-          if(o.mount && !montura[o.mount]) montura[o.mount] = { fac:f, cost:o.cost };
+          if(o.mount && !mountMap[o.mount]) mountMap[o.mount] = { faction:f, cost:o.cost };
         });
       });
       (f.warriors || []).forEach(w => out.push({
-        def:w, fac:f, tipo:"war", tier:null, tierNom:"", rank:0
+        def:w, faction:f, type:"war", tier:null, tierName:"", rank:0
       }));
     });
 
-    Object.keys(montura).forEach(k => {
+    Object.keys(mountMap).forEach(k => {
       const m = MOUNTS[k];
       if(!m) return;
       out.push({
-        def:{ id:k, name:m.name, cost:montura[k].cost, race:"Montura",
-              keywords:["Montura"], stats:m.stats, rules:m.rules, options:[] },
-        fac:montura[k].fac, tipo:"mount", tier:null, tierNom:"", rank:0
+        def:{ id:k, name:m.name, cost:mountMap[k].cost, race:"Mount",
+              keywords:["Mount"], stats:m.stats, rules:m.rules, options:[] },
+        faction:mountMap[k].faction, type:"mount", tier:null, tierName:"", rank:0
       });
     });
 
     return out;
   }
 
-  const TODAS = filas();
+  const ALL_ROWS = rows();
 
-  /* Texto sobre el que busca el buscador: nombre, palabras clave,
-     equipo, reglas y acciones heroicas. */
-  function textoDe(r){
+  /* Text the search box looks through: name, keywords, wargear,
+     special rules and heroic actions. */
+  function searchTextFor(r){
     const d = r.def;
     return [
-      d.name, r.fac.name, d.race, (d.keywords || []).join(" "), d.wargear,
+      d.name, r.faction.name, d.race, (d.keywords || []).join(" "), d.wargear,
       (d.rules   || []).map(x => x.name + " " + x.desc).join(" "),
       (d.heroic  || []).map(x => x.name + " " + x.desc).join(" "),
       (d.options || []).map(x => x.name).join(" "),
-      r.tierNom
+      r.tierName
     ].filter(Boolean).join(" ").toLowerCase();
   }
-  TODAS.forEach(r => { r._txt = textoDe(r); });
+  ALL_ROWS.forEach(r => { r._txt = searchTextFor(r); });
 
-  const COSTE_MAX = Math.max(...TODAS.map(r => r.def.cost), 0);
+  const MAX_COST = Math.max(...ALL_ROWS.map(r => r.def.cost), 0);
 
-  /* ---------- Estado de la vista ---------- */
-  const F = { fac:"", tipo:"", tier:"", coste:COSTE_MAX, q:"" };
-  let orden = { col:"cost", dir:-1 };
+  /* ---------- View state ---------- */
+  const F = { faction:"", type:"", tier:"", cost:MAX_COST, q:"" };
+  let sortState = { col:"cost", dir:-1 };
 
-  /* ---------- Poblado de los selectores ---------- */
-  function initFiltros(){
-    $("#fFac").innerHTML = '<option value="">Todas</option>' +
+  /* ---------- Populating the selectors ---------- */
+  function initFilters(){
+    $("#filterFaction").innerHTML = '<option value="">All</option>' +
       Object.values(FACTIONS).map(f => `<option value="${f.id}">${esc(f.name)}</option>`).join("");
 
-    /* Sólo los rangos que existen en los datos, de mayor a menor */
-    const tiers = [...new Set(TODAS.filter(r => r.tier).map(r => r.tier))]
+    /* Only the tiers present in the data, highest to lowest */
+    const tiers = [...new Set(ALL_ROWS.filter(r => r.tier).map(r => r.tier))]
       .sort((a,b) => TIERS[b].rank - TIERS[a].rank);
-    $("#fTier").innerHTML = '<option value="">Todos</option>' +
-      tiers.map(t => `<option value="${t}">${esc(TIERS[t].es)}</option>`).join("");
+    $("#filterTier").innerHTML = '<option value="">All</option>' +
+      tiers.map(t => `<option value="${t}">${esc(TIERS[t].name)}</option>`).join("");
 
-    const sl = $("#fCoste");
-    sl.max = COSTE_MAX; sl.value = COSTE_MAX;
-    $("#fCosteVal").textContent = COSTE_MAX;
+    const sl = $("#filterCost");
+    sl.max = MAX_COST; sl.value = MAX_COST;
+    $("#filterCostVal").textContent = MAX_COST;
 
-    /* Enlace directo desde facciones.html: perfiles.html?fac=bolton */
+    /* Direct link from factions.html: profiles.html?fac=bolton */
     const q = new URLSearchParams(location.search).get("fac");
-    if(q && FACTIONS[q]){ F.fac = q; $("#fFac").value = q; }
+    if(q && FACTIONS[q]){ F.faction = q; $("#filterFaction").value = q; }
   }
 
-  /* ---------- Filtrado ---------- */
-  function visibles(){
-    return TODAS.filter(r => {
-      if(F.fac  && r.fac.id !== F.fac)  return false;
-      if(F.tipo && r.tipo   !== F.tipo) return false;
+  /* ---------- Filtering ---------- */
+  function visibleRows(){
+    return ALL_ROWS.filter(r => {
+      if(F.faction  && r.faction.id !== F.faction)  return false;
+      if(F.type && r.type   !== F.type) return false;
       if(F.tier && r.tier   !== F.tier) return false;
-      if(r.def.cost > F.coste)          return false;
+      if(r.def.cost > F.cost)          return false;
       if(F.q && r._txt.indexOf(F.q) === -1) return false;
       return true;
     });
   }
 
-  /* ---------- Orden ----------
-     Mv y los valores "4+" son texto: se ordenan por su parte numérica. */
-  function valor(r, col){
+  /* ---------- Sorting ----------
+     Mv and "4+" values are text: they sort by their numeric part. */
+  function sortValue(r, col){
     const d = r.def;
     if(col === "name") return d.name.toLowerCase();
     if(col === "cost") return d.cost;
@@ -111,202 +111,202 @@
     const n = parseFloat(String(v).replace(/[^\d.]/g, ""));
     return isNaN(n) ? -1 : n;
   }
-  function ordenar(rs){
+  function sortRows(rs){
     return rs.slice().sort((a,b) => {
-      const va = valor(a, orden.col), vb = valor(b, orden.col);
-      if(va < vb) return -orden.dir;
-      if(va > vb) return  orden.dir;
+      const va = sortValue(a, sortState.col), vb = sortValue(b, sortState.col);
+      if(va < vb) return -sortState.dir;
+      if(va > vb) return  sortState.dir;
       return a.def.name.localeCompare(b.def.name);
     });
   }
 
-  /* ---------- Tabla ---------- */
-  function celda(v){
+  /* ---------- Table ---------- */
+  function cell(v){
     return (v === undefined || v === null || v === "")
-      ? '<td class="vacio">&mdash;</td>'
+      ? '<td class="empty">&mdash;</td>'
       : `<td>${esc(v)}</td>`;
   }
 
-  function pintar(){
-    const rs = ordenar(visibles());
-    const tb = $("#cuerpoPerfiles");
+  function renderTable(){
+    const rs = sortRows(visibleRows());
+    const tb = $("#profilesBody");
 
     if(!rs.length){
-      tb.innerHTML = `<tr><td colspan="14" class="sin-datos">
-        Ning&uacute;n perfil coincide con estos filtros.</td></tr>`;
+      tb.innerHTML = `<tr><td colspan="14" class="no-data">
+        No profile matches these filters.</td></tr>`;
     } else {
       tb.innerHTML = rs.map((r, i) => {
         const d = r.def, s = d.stats;
-        return `<tr data-perfil="${i}" tabindex="0">
-          <td class="col-nm" style="--faccion:${r.fac.color}">
-            <div class="p-nombre">
+        return `<tr data-profile="${i}" tabindex="0">
+          <td class="col-nm" style="--faction:${r.faction.color}">
+            <div class="p-name">
               ${IMGS[d.id] ? `<img src="${IMGS[d.id]}" alt="" loading="lazy">` : ""}
               <div>
                 <div class="n">${esc(d.name)}</div>
-                <div class="m">${esc(r.fac.name)} &middot; ${r.tipo === "hero" ? esc(r.tierNom) : esc((d.keywords||[]).join(" · "))}</div>
+                <div class="m">${esc(r.faction.name)} &middot; ${r.type === "hero" ? esc(r.tierName) : esc((d.keywords||[]).join(" · "))}</div>
               </div>
             </div>
           </td>
           <td class="col-cost">${d.cost}</td>
-          ${celda(s.mv)}${celda(s.fv)}${celda(s.sv)}${celda(s.s)}${celda(s.d)}
-          ${celda(s.a)}${celda(s.w)}${celda(s.c)}${celda(s.i)}
-          ${celda(d.might)}${celda(d.will)}${celda(d.fate)}
+          ${cell(s.mv)}${cell(s.fv)}${cell(s.sv)}${cell(s.s)}${cell(s.d)}
+          ${cell(s.a)}${cell(s.w)}${cell(s.c)}${cell(s.i)}
+          ${cell(d.might)}${cell(d.will)}${cell(d.fate)}
         </tr>`;
       }).join("");
-      /* El índice del data-attribute apunta a la lista ya ordenada */
-      tb._filas = rs;
+      /* The data-attribute index points into the already-sorted list */
+      tb._rows = rs;
     }
 
-    const total = TODAS.length;
-    $("#fInfo").innerHTML = rs.length === total
-      ? `Mostrando los <b>${total}</b> perfiles cargados.`
-      : `Mostrando <b>${rs.length}</b> de <b>${total}</b> perfiles.`;
+    const total = ALL_ROWS.length;
+    $("#filterInfo").innerHTML = rs.length === total
+      ? `Showing all <b>${total}</b> loaded profiles.`
+      : `Showing <b>${rs.length}</b> of <b>${total}</b> profiles.`;
 
-    document.querySelectorAll("#tablaPerfiles th[data-sort]").forEach(th => {
-      if(th.dataset.sort === orden.col) th.setAttribute("aria-sort", orden.dir === 1 ? "ascending" : "descending");
+    document.querySelectorAll("#profilesTable th[data-sort]").forEach(th => {
+      if(th.dataset.sort === sortState.col) th.setAttribute("aria-sort", sortState.dir === 1 ? "ascending" : "descending");
       else th.removeAttribute("aria-sort");
     });
   }
 
-  /* ---------- Ficha completa ----------
-     Mismo contenido que despliega el constructor, en modal. */
-  function bloque(titulo, items){
+  /* ---------- Full profile card ----------
+     Same content the army builder expands, shown in a modal. */
+  function block(title, items){
     if(!items || !items.length) return "";
-    return `<div class="blk"><div class="lb">${titulo}</div>` +
+    return `<div class="blk"><div class="lb">${title}</div>` +
       items.map(a => `<div class="rule"><b>${esc(a.name)}:</b> ${esc(a.desc)}</div>`).join("") +
       `</div>`;
   }
 
-  function abrirFicha(r){
+  function openProfileCard(r){
     const d = r.def, s = d.stats;
     const k  = ["mv","fv","sv","s","d","a","w","c","i"];
     const lb = {mv:"Mv",fv:"Fv",sv:"Sv",s:"S",d:"D",a:"A",w:"W",c:"C",i:"I"};
 
-    let tabla = `<table class="st"><tr>${k.map(x=>`<th>${lb[x]}</th>`).join("")}</tr>` +
+    let table = `<table class="st"><tr>${k.map(x=>`<th>${lb[x]}</th>`).join("")}</tr>` +
                 `<tr>${k.map(x=>`<td>${esc(s[x])}</td>`).join("")}</tr></table>`;
 
-    let escudos = "";
-    if(r.tipo === "hero"){
-      escudos = `<div class="shields">
-        <div class="shield"><div class="v">${d.might}</div><div class="l">Poder</div></div>
-        <div class="shield"><div class="v">${d.will}</div><div class="l">Voluntad</div></div>
-        <div class="shield"><div class="v">${d.fate}</div><div class="l">Destino</div></div>
+    let shields = "";
+    if(r.type === "hero"){
+      shields = `<div class="shields">
+        <div class="shield"><div class="v">${d.might}</div><div class="l">Might</div></div>
+        <div class="shield"><div class="v">${d.will}</div><div class="l">Will</div></div>
+        <div class="shield"><div class="v">${d.fate}</div><div class="l">Fate</div></div>
       </div>`;
     }
 
-    let opciones = "";
+    let options = "";
     if(d.options && d.options.length){
-      opciones = `<div class="blk"><div class="lb">Opciones</div><ul class="ficha-opts">` +
+      options = `<div class="blk"><div class="lb">Options</div><ul class="card-options">` +
         d.options.map(o => `<li><span>${esc(o.name)}
           ${o.desc ? `<span class="od">${esc(o.desc)}</span>` : ""}</span>
           <span class="oc">+${o.cost}</span></li>`).join("") +
         `</ul></div>`;
     }
 
-    /* Sub-perfil de montura, igual que despliega el constructor */
-    let monturas = "";
+    /* Mount sub-profile, same as the army builder shows */
+    let mountBlocks = "";
     (d.options || []).forEach(o => {
       const m = o.mount && MOUNTS[o.mount];
       if(!m) return;
-      monturas += `<div class="blk sub-montura">
-        <div class="lb">Montura &middot; ${esc(m.name)}</div>
-        ${IMGS[o.mount] ? `<img class="sub-montura-img" src="${IMGS[o.mount]}" alt="${esc(m.name)}" loading="lazy">` : ""}
+      mountBlocks += `<div class="blk sub-mount">
+        <div class="lb">Mount &middot; ${esc(m.name)}</div>
+        ${IMGS[o.mount] ? `<img class="sub-mount-img" src="${IMGS[o.mount]}" alt="${esc(m.name)}" loading="lazy">` : ""}
         <table class="st"><tr>${k.map(x=>`<th>${lb[x]}</th>`).join("")}</tr>
         <tr>${k.map(x=>`<td>${esc(m.stats[x])}</td>`).join("")}</tr></table>
         ${(m.rules||[]).map(x=>`<div class="rule"><b>${esc(x.name)}:</b> ${esc(x.desc)}</div>`).join("")}
       </div>`;
     });
 
-    $("#fichaCuerpo").innerHTML = `
-      <div class="ficha-head">
+    $("#cardBody").innerHTML = `
+      <div class="card-head">
         ${IMGS[d.id] ? `<img src="${IMGS[d.id]}" alt="${esc(d.name)}">` : ""}
-        <div class="ficha-id">
-          <h2 id="fichaTitulo">${esc(d.name)}</h2>
-          <div class="ficha-meta">${esc(r.fac.name)} &middot; ${esc(d.race)} &middot;
-            ${esc((d.keywords||[]).join(" · "))}${r.tierNom ? " &middot; " + esc(r.tierNom) : ""}</div>
-          <div class="ficha-coste">${d.cost}<span>PUNTOS</span></div>
+        <div class="card-info">
+          <h2 id="cardTitle">${esc(d.name)}</h2>
+          <div class="card-meta">${esc(r.faction.name)} &middot; ${esc(d.race)} &middot;
+            ${esc((d.keywords||[]).join(" · "))}${r.tierName ? " &middot; " + esc(r.tierName) : ""}</div>
+          <div class="card-cost">${d.cost}<span>POINTS</span></div>
         </div>
       </div>
-      ${tabla}
-      ${escudos}
-      ${d.wargear ? `<div class="blk"><div class="lb">Equipamiento</div><p>${esc(d.wargear)}</p></div>` : ""}
-      ${opciones}
-      ${monturas}
-      ${bloque("Acciones Heroicas", d.heroic)}
-      ${bloque("Reglas especiales", d.rules)}
+      ${table}
+      ${shields}
+      ${d.wargear ? `<div class="blk"><div class="lb">Wargear</div><p>${esc(d.wargear)}</p></div>` : ""}
+      ${options}
+      ${mountBlocks}
+      ${block("Heroic Actions", d.heroic)}
+      ${block("Special Rules", d.rules)}
       ${d.flavor ? `<div class="flavor">“${esc(d.flavor)}”</div>` : ""}
     `;
-    $("#ficha").style.setProperty("--faccion", r.fac.color);
-    $("#fichaFondo").hidden = false;
+    $("#card").style.setProperty("--faction", r.faction.color);
+    $("#cardBackdrop").hidden = false;
     document.body.style.overflow = "hidden";
-    $("#fichaCerrar").focus();
+    $("#cardClose").focus();
   }
 
-  function cerrarFicha(){
-    $("#fichaFondo").hidden = true;
+  function closeProfileCard(){
+    $("#cardBackdrop").hidden = true;
     document.body.style.overflow = "";
   }
 
-  /* ---------- Eventos ---------- */
-  function initEventos(){
-    $("#fFac").addEventListener("change", e => { F.fac = e.target.value; pintar(); });
-    $("#fTipo").addEventListener("change", e => { F.tipo = e.target.value; pintar(); });
-    $("#fTier").addEventListener("change", e => {
+  /* ---------- Events ---------- */
+  function initEvents(){
+    $("#filterFaction").addEventListener("change", e => { F.faction = e.target.value; renderTable(); });
+    $("#filterType").addEventListener("change", e => { F.type = e.target.value; renderTable(); });
+    $("#filterTier").addEventListener("change", e => {
       F.tier = e.target.value;
-      /* Filtrar por rango sólo tiene sentido sobre héroes */
-      if(F.tier){ F.tipo = "hero"; $("#fTipo").value = "hero"; }
-      pintar();
+      /* Filtering by tier only makes sense for heroes */
+      if(F.tier){ F.type = "hero"; $("#filterType").value = "hero"; }
+      renderTable();
     });
-    $("#fCoste").addEventListener("input", e => {
-      F.coste = parseInt(e.target.value, 10);
-      $("#fCosteVal").textContent = F.coste;
-      pintar();
+    $("#filterCost").addEventListener("input", e => {
+      F.cost = parseInt(e.target.value, 10);
+      $("#filterCostVal").textContent = F.cost;
+      renderTable();
     });
-    $("#fBusq").addEventListener("input", e => {
+    $("#filterSearch").addEventListener("input", e => {
       F.q = e.target.value.trim().toLowerCase();
-      pintar();
+      renderTable();
     });
-    $("#fReset").addEventListener("click", () => {
-      F.fac = ""; F.tipo = ""; F.tier = ""; F.coste = COSTE_MAX; F.q = "";
-      $("#fFac").value = ""; $("#fTipo").value = ""; $("#fTier").value = "";
-      $("#fCoste").value = COSTE_MAX; $("#fCosteVal").textContent = COSTE_MAX;
-      $("#fBusq").value = "";
-      pintar();
+    $("#filterReset").addEventListener("click", () => {
+      F.faction = ""; F.type = ""; F.tier = ""; F.cost = MAX_COST; F.q = "";
+      $("#filterFaction").value = ""; $("#filterType").value = ""; $("#filterTier").value = "";
+      $("#filterCost").value = MAX_COST; $("#filterCostVal").textContent = MAX_COST;
+      $("#filterSearch").value = "";
+      renderTable();
     });
 
-    document.querySelectorAll("#tablaPerfiles th[data-sort]").forEach(th => {
+    document.querySelectorAll("#profilesTable th[data-sort]").forEach(th => {
       th.addEventListener("click", () => {
         const col = th.dataset.sort;
-        if(orden.col === col) orden.dir = -orden.dir;
-        else orden = { col:col, dir: col === "name" ? 1 : -1 };
-        pintar();
+        if(sortState.col === col) sortState.dir = -sortState.dir;
+        else sortState = { col:col, dir: col === "name" ? 1 : -1 };
+        renderTable();
       });
     });
 
-    const tb = $("#cuerpoPerfiles");
-    function abrirDesde(el){
-      const tr = el.closest("[data-perfil]");
-      if(!tr || !tb._filas) return;
-      abrirFicha(tb._filas[parseInt(tr.dataset.perfil, 10)]);
+    const tb = $("#profilesBody");
+    function openFrom(el){
+      const tr = el.closest("[data-profile]");
+      if(!tr || !tb._rows) return;
+      openProfileCard(tb._rows[parseInt(tr.dataset.profile, 10)]);
     }
-    tb.addEventListener("click", e => abrirDesde(e.target));
+    tb.addEventListener("click", e => openFrom(e.target));
     tb.addEventListener("keydown", e => {
-      if(e.key === "Enter" || e.key === " "){ e.preventDefault(); abrirDesde(e.target); }
+      if(e.key === "Enter" || e.key === " "){ e.preventDefault(); openFrom(e.target); }
     });
 
-    $("#fichaCerrar").addEventListener("click", cerrarFicha);
-    $("#fichaFondo").addEventListener("click", e => {
-      if(e.target === $("#fichaFondo")) cerrarFicha();
+    $("#cardClose").addEventListener("click", closeProfileCard);
+    $("#cardBackdrop").addEventListener("click", e => {
+      if(e.target === $("#cardBackdrop")) closeProfileCard();
     });
     document.addEventListener("keydown", e => {
-      if(e.key === "Escape" && !$("#fichaFondo").hidden) cerrarFicha();
+      if(e.key === "Escape" && !$("#cardBackdrop").hidden) closeProfileCard();
     });
   }
 
   function init(){
-    initFiltros();
-    initEventos();
-    pintar();
+    initFilters();
+    initEvents();
+    renderTable();
   }
 
   if(document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);

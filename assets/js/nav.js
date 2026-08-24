@@ -1,28 +1,28 @@
 /* =====================================================================
-   CONVERGENCE — NAVEGACIÓN
-   Estado al scrollear, menús hamburguesa y marcado de la página actual.
-   Compartido por las siete páginas.
+   CONVERGENCE — NAVIGATION
+   Scroll state, hamburger menus and current-page marking.
+   Shared by all seven pages.
    ===================================================================== */
 (function(){
   "use strict";
 
-  /* ---------- Página actual ----------
-     El enlace de la página en la que estás lleva el filete de oro fijo. */
-  function marcarActiva(){
-    var archivo = (location.pathname.split("/").pop() || "index.html").toLowerCase();
-    if(!archivo) archivo = "index.html";
+  /* ---------- Current page ----------
+     The link for the page you are on keeps the gold rule permanently. */
+  function markActive(){
+    var currentPage = (location.pathname.split("/").pop() || "index.html").toLowerCase();
+    if(!currentPage) currentPage = "index.html";
     document.querySelectorAll(".cv-navlink, .cv-menu a").forEach(function(a){
       var href = (a.getAttribute("href") || "").split("/").pop().split("#")[0].toLowerCase();
-      if(href && href === archivo){
+      if(href && href === currentPage){
         a.classList.add("is-active");
         a.setAttribute("aria-current", "page");
       }
     });
   }
 
-  /* ---------- Fondo de la barra al scrollear ----------
-     La barra del hero nace transparente. Las interiores nacen opacas
-     (clase is-fixed en el marcado) y no necesitan el listener. */
+  /* ---------- Bar background on scroll ----------
+     The hero bar starts transparent. Inner pages start opaque
+     (is-fixed class in the markup) and do not need the listener. */
   function initScroll(){
     var nav = document.querySelector(".cv-nav");
     if(!nav || nav.classList.contains("is-fixed")) return;
@@ -33,44 +33,44 @@
     onScroll();
   }
 
-  /* ---------- Menús hamburguesa ---------- */
+  /* ---------- Hamburger menus ---------- */
   function initMenus(){
-    var pares = [
+    var pairs = [
       { btn:document.getElementById("cv-hamburger-right"), menu:document.getElementById("cv-menu-right") },
       { btn:document.getElementById("cv-hamburger-main"),  menu:document.getElementById("cv-menu-main")  }
     ].filter(function(p){ return p.btn && p.menu; });
 
-    if(!pares.length) return;
+    if(!pairs.length) return;
 
-    function set(par, abierto){
-      par.menu.classList.toggle("is-open", abierto);
-      par.btn.setAttribute("aria-expanded", String(abierto));
+    function set(pair, open){
+      pair.menu.classList.toggle("is-open", open);
+      pair.btn.setAttribute("aria-expanded", String(open));
     }
-    function cerrarTodo(){ pares.forEach(function(p){ set(p, false); }); }
+    function closeAll(){ pairs.forEach(function(p){ set(p, false); }); }
 
-    pares.forEach(function(par){
-      par.btn.addEventListener("click", function(e){
+    pairs.forEach(function(pair){
+      pair.btn.addEventListener("click", function(e){
         e.stopPropagation();
-        var abierto = par.menu.classList.contains("is-open");
-        cerrarTodo();
-        set(par, !abierto);
+        var open = pair.menu.classList.contains("is-open");
+        closeAll();
+        set(pair, !open);
       });
     });
 
     document.addEventListener("click", function(e){
-      var dentro = pares.some(function(p){
+      var inside = pairs.some(function(p){
         return p.menu.contains(e.target) || p.btn.contains(e.target);
       });
-      if(!dentro) cerrarTodo();
+      if(!inside) closeAll();
     });
 
     document.addEventListener("keydown", function(e){
-      if(e.key === "Escape") cerrarTodo();
+      if(e.key === "Escape") closeAll();
     });
   }
 
   function init(){
-    marcarActiva();
+    markActive();
     initScroll();
     initMenus();
   }

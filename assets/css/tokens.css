@@ -1,83 +1,83 @@
 /* =====================================================================
    CONVERGENCE — TOKENS
-   Fuente única de verdad para color, tipografía y medidas.
-   Los valores base salen del hero (Claude Design). No dupliques
-   literales de color en ningún otro archivo: referenciá estas variables.
+   Single source of truth for colour, typography and measurements.
+   The base values come from the hero (Claude Design). Do not duplicate
+   colour literals in any other file: reference these variables.
    ===================================================================== */
 
 :root{
-  /* ---------- Paleta base ---------- */
+  /* ---------- Base palette ---------- */
   --oro:#C9A227;
   --verde:#2F4438;
   --negro:#14110E;
   --hueso:#EDE6D6;
   --sangre:#7C2D2D;
 
-  /* ---------- Superficies ----------
-     Derivadas del negro base. El panel es semitransparente a propósito:
-     las tres páginas de herramienta llevan fondo fotográfico detrás. */
+  /* ---------- Surfaces ----------
+     Derived from the base black. The panel is semi-transparent on purpose:
+     the three tool pages carry a photographic background behind them. */
   --panel:rgba(20,17,14,.82);
   --panel-solido:#14110E;
   --panel-alt:rgba(20,17,14,.62);
   --scrim:rgba(10,12,14,.62);
 
-  /* ---------- Filetes y bordes ----------
-     El hairline de oro al 18% es el borde estándar de todo panel.
-     El de hueso al 10% separa filas dentro de una tabla. */
+  /* ---------- Rules and borders ----------
+     The gold hairline at 18% is the standard border for every panel.
+     The bone one at 10% separates rows inside a table. */
   --linea-oro:rgba(201,162,39,.18);
   --linea-oro-fuerte:rgba(201,162,39,.35);
   --linea-hueso:rgba(237,230,214,.10);
   --linea-hueso-fuerte:rgba(237,230,214,.45);
 
-  /* ---------- Texto ---------- */
+  /* ---------- Text ---------- */
   --txt:var(--hueso);
   --txt-suave:rgba(237,230,214,.82);
   --txt-dim:rgba(237,230,214,.58);
   --txt-tenue:rgba(237,230,214,.38);
 
-  /* ---------- Estados ---------- */
+  /* ---------- States ---------- */
   --ok:#5C8A4A;
   --alerta:var(--oro);
   --error:#B23B3B;
   --error-txt:#E08B8B;
 
-  /* ---------- Tipografía ---------- */
+  /* ---------- Typography ---------- */
   --f-titulo:'Cinzel', Georgia, serif;
   --f-texto:'Jost', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
-  --ls-titulo:.06em;   /* tracking de estandarte del hero */
+  --ls-titulo:.06em;   /* hero banner tracking */
   --ls-kicker:.22em;
   --ls-nav:.12em;
   --ls-lb:.14em;
 
-  /* ---------- Geometría ----------
-     Radios mínimos: nada de tarjeta SaaS. */
+  /* ---------- Geometry ----------
+     Minimal radii: nothing that looks like a SaaS card. */
   --r:2px;
   --r-sm:2px;
 
-  /* ---------- Facciones ----------
-     Una variable por facción. Es lo que mantiene coherentes la web,
-     las tarjetas de facción y las fichas de perfil. */
-  --faccion-bolton:#8b1a1a;
-  --faccion-gondor:#2f4d75;
-  --faccion-isengard:#3b3a36;
-  --faccion-lannister:#9b7d1f;
-  --faccion-horda:#5a3a22;
-  --faccion-numenor:#52586b;
-  --faccion-dunharrow:#3f5c4f;
+  /* ---------- Factions ----------
+     One variable per faction. This is what keeps the site, the faction
+     cards and the profile cards consistent. */
+  --faction-bolton:#8b1a1a;
+  --faction-gondor:#2f4d75;
+  --faction-isengard:#3b3a36;
+  --faction-lannister:#9b7d1f;
+  --faction-horda:#5a3a22;
+  --faction-numenor:#52586b;
+  --faction-dunharrow:#3f5c4f;
 
-  /* Variante clara de cada facción, para TEXTO.
-     Los colores de arriba son de banda: sobre panel oscuro se quedan en
-     3,4:1 y no llegan al mínimo de 4,5:1. Estos sí (6:1 o más). */
-  --faccion-bolton-txt:#E8756F;
-  --faccion-gondor-txt:#8FB4DE;
-  --faccion-isengard-txt:#B9B6AC;
-  --faccion-lannister-txt:#E0C158;
-  --faccion-horda-txt:#D9A87A;
-  --faccion-numenor-txt:#AEB3C4;
-  --faccion-dunharrow-txt:#8FBFA0;
+  /* Light variant of each faction, for TEXT.
+     The colours above are band colours: on a dark panel they sit at
+     3.4:1 and miss the 4.5:1 minimum. These clear it (6:1 or better). */
+  --faction-bolton-txt:#E8756F;
+  --faction-gondor-txt:#8FB4DE;
+  --faction-isengard-txt:#B9B6AC;
+  --faction-lannister-txt:#E0C158;
+  --faction-horda-txt:#D9A87A;
+  --faction-numenor-txt:#AEB3C4;
+  --faction-dunharrow-txt:#8FBFA0;
 
-  /* Facción activa. renderCabecera() la reescribe en runtime a través de
-     --fac, que es el nombre que usa el piloto. */
-  --fac:var(--faccion-bolton);
+  /* Active faction. renderCabecera() rewrites it at runtime through
+     --fac, which is the name the pilot uses. */
+  --fac:var(--faction-bolton);
 }

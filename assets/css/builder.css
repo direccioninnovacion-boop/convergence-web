@@ -1,15 +1,15 @@
 /* =====================================================================
-   CONVERGENCE — CONSTRUCTOR, PARTIDA Y LISTAS
-   El CSS del piloto reescrito con el lenguaje del hero.
-   Los nombres de clase son los que emite builder.js: no los renombres
-   sin tocar también el JS.
-   Depende de tokens.css y site.css.
+   CONVERGENCE — BUILDER, GAME AND LISTS
+   The pilot's CSS rewritten in the hero's visual language.
+   The class names are the ones builder.js emits: do not rename them
+   without touching the JS as well.
+   Depends on tokens.css and site.css.
    ===================================================================== */
 
 /* =====================================================================
-   1. BARRA DE LISTA
-   Presente en las tres páginas: es lo que hace que el nombre, el límite
-   y el total viajen contigo de una a otra.
+   1. LIST BAR
+   Present on all three pages: it is what makes the name, the limit and
+   the total travel with you from one to the next.
    ===================================================================== */
 .bld-bar{
   background:var(--panel);
@@ -19,7 +19,7 @@
   display:flex;align-items:center;gap:14px;flex-wrap:wrap;
   margin-bottom:22px;
 }
-.bld-bar .campo{display:flex;flex-direction:column;gap:5px;}
+.bld-bar .field{display:flex;flex-direction:column;gap:5px;}
 .bld-bar label{
   font-size:.62rem;letter-spacing:var(--ls-lb);text-transform:uppercase;
   color:var(--oro);font-weight:500;
@@ -35,11 +35,11 @@
 #ptNow.over{color:var(--error-txt);}
 #ptNow.ok{color:var(--ok);}
 
-/* Banda de facción: el color lo pone renderCabecera() en --fac */
+/* Faction band: the colour is set by renderCabecera() in --fac */
 .bld-band{height:3px;background:var(--fac);border-radius:2px 2px 0 0;}
 
 /* =====================================================================
-   2. CONTROLES DE FORMULARIO
+   2. FORM CONTROLS
    ===================================================================== */
 input,select,textarea,button{font-family:var(--f-texto);font-size:.92rem;color:var(--txt);}
 input,select,textarea{
@@ -53,7 +53,7 @@ select{cursor:pointer;}
 select option{background:var(--panel-solido);color:var(--txt);}
 button{background:none;border:none;cursor:pointer;}
 
-/* Botones del constructor */
+/* Army builder buttons */
 .btn{
   border:1px solid var(--linea-hueso-fuerte);
   border-radius:var(--r);
@@ -87,9 +87,9 @@ button{background:none;border:none;cursor:pointer;}
 .small{font-size:.83rem;}
 .tiny{font-size:.74rem;}
 .hidden{display:none !important;}
-.fuera{color:var(--error-txt);font-weight:600;}
+.critical{color:var(--error-txt);font-weight:600;}
 
-/* Panel: la unidad de superficie de todo el constructor */
+/* Panel: the surface unit of the whole army builder */
 .panel{
   background:var(--panel);
   border:1px solid var(--linea-oro);
@@ -107,7 +107,7 @@ button{background:none;border:none;cursor:pointer;}
 .pbody{padding:18px;}
 
 /* =====================================================================
-   4. CATÁLOGO
+   4. CATALOGUE
    ===================================================================== */
 .cathead{
   font-size:.66rem;letter-spacing:var(--ls-lb);text-transform:uppercase;
@@ -132,7 +132,7 @@ button{background:none;border:none;cursor:pointer;}
   font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;
   color:var(--txt-dim);font-weight:400;margin-top:2px;
 }
-/* El coste: oro y Cinzel. Es el número que más se mira. */
+/* The cost: gold and Cinzel. It is the number people look at most. */
 .cat-item .pt,.unit-head .pt,.wb-head .pt{
   font-family:var(--f-titulo);font-weight:700;color:var(--oro);font-size:1rem;
 }
@@ -202,8 +202,8 @@ button{background:none;border:none;cursor:pointer;}
 .unit.open .unit-detail{display:block;}
 
 /* =====================================================================
-   6. TABLA DE ESTADÍSTICAS
-   Sin bordes de caja: sólo hairlines entre filas. Cabecera en oro.
+   6. STATISTICS TABLE
+   No box borders: only hairlines between rows. Gold header.
    ===================================================================== */
 table.st{
   width:100%;border-collapse:collapse;
@@ -223,7 +223,7 @@ table.st td{
   background:none;color:var(--txt);font-variant-numeric:tabular-nums;
 }
 table.st tr:last-child td{border-bottom:none;}
-/* Valor alterado por una opción (escudo, arco…) */
+/* Value altered by an option (shield, bow…) */
 table.st td.mod{color:var(--oro);font-weight:600;}
 
 .shields{display:flex;gap:8px;margin-bottom:14px;}
@@ -238,7 +238,7 @@ table.st td.mod{color:var(--oro);font-weight:600;}
 }
 
 /* =====================================================================
-   7. BLOQUES DE REGLAS
+   7. RULE BLOCKS
    ===================================================================== */
 .blk{margin-bottom:14px;}
 .blk .lb{
@@ -254,7 +254,7 @@ table.st td.mod{color:var(--oro);font-weight:600;}
 }
 
 /* =====================================================================
-   8. OPCIONES Y CANTIDAD
+   8. OPTIONS AND QUANTITY
    ===================================================================== */
 .opt{
   display:flex;align-items:center;gap:10px;
@@ -284,7 +284,7 @@ table.st td.mod{color:var(--oro);font-weight:600;}
 }
 
 /* =====================================================================
-   9. VALIDACIÓN
+   9. VALIDATION
    ===================================================================== */
 .val{
   font-size:.85rem;line-height:1.5;
@@ -298,7 +298,7 @@ table.st td.mod{color:var(--oro);font-weight:600;}
 .val.good{background:rgba(92,138,74,.14);border-color:var(--ok);}
 
 /* =====================================================================
-   10. MODO PARTIDA
+   10. GAME MODE
    ===================================================================== */
 .breakbar{
   height:26px;border:1px solid var(--linea-hueso);border-radius:var(--r);
@@ -330,7 +330,7 @@ table.st td.mod{color:var(--oro);font-weight:600;}
 .res .lb{
   width:80px;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--oro);
 }
-.tropa-linea{border-top:1px solid var(--linea-hueso);padding-top:10px;margin-top:10px;}
+.troop-line{border-top:1px solid var(--linea-hueso);padding-top:10px;margin-top:10px;}
 .dead{opacity:.42;}
 .dead .nm{text-decoration:line-through;}
 
@@ -365,7 +365,7 @@ table.st td.mod{color:var(--oro);font-weight:600;}
 .gres .pip{width:31px;height:31px;font-size:.82rem;}
 
 /* =====================================================================
-   11. LISTAS GUARDADAS
+   11. SAVED LISTS
    ===================================================================== */
 .saved{
   display:flex;align-items:center;gap:10px;flex-wrap:wrap;
@@ -389,7 +389,7 @@ table.st td.mod{color:var(--oro);font-weight:600;}
 }
 @media (max-width:560px){
   .bld-bar{gap:11px;}
-  .bld-bar .campo{flex:1;min-width:120px;}
+  .bld-bar .field{flex:1;min-width:120px;}
   .gmain{grid-template-columns:1fr;}
   .gpic{width:150px;}
   .gres .pip{width:27px;height:27px;}
@@ -398,9 +398,9 @@ table.st td.mod{color:var(--oro);font-weight:600;}
 }
 
 /* =====================================================================
-   13. IMPRESIÓN
-   La hoja imprimible sale en negro sobre blanco: es para llevarla a la
-   mesa, no para lucir la paleta.
+   13. PRINT
+   The printable sheet comes out black on white: it is meant for the
+   table, not for showing off the palette.
    ===================================================================== */
 #print{display:none;}
 @media print{

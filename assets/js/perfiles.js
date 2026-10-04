@@ -177,13 +177,22 @@
       `</div>`;
   }
 
+  /* Tooltip text: rule libraries first, data.js desc as fallback.
+     (const globals aren't on window, so test with typeof.) */
+  function ruleDesc(a){
+    return (typeof STANDARD_RULES !== "undefined" && STANDARD_RULES[a.name])
+        || (typeof CUSTOM_RULES !== "undefined" && CUSTOM_RULES[a.name])
+        || a.desc
+        || "";
+  }
+
   /* Heroic actions as chips: hover=desktop tooltip, click=mobile toggle */
   function heroicBlock(items){
     if(!items || !items.length) return "";
     const chips = items.map(a =>
       `<button class="ha-chip" type="button"
-         data-name="${esc(a.name)}" data-desc="${esc(a.desc)}"
-         aria-label="${esc(a.name)}: ${esc(a.desc)}">
+         data-name="${esc(a.name)}" data-desc="${esc(ruleDesc(a))}"
+         aria-label="${esc(a.name)}: ${esc(ruleDesc(a))}">
         ${esc(a.name)}
       </button>`
     ).join("");

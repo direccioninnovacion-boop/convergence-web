@@ -177,6 +177,20 @@
       `</div>`;
   }
 
+  /* Heroic actions as chips: hover=desktop tooltip, click=mobile toggle */
+  function heroicBlock(items){
+    if(!items || !items.length) return "";
+    const chips = items.map(a =>
+      `<button class="ha-chip" type="button"
+         data-name="${esc(a.name)}" data-desc="${esc(a.desc)}"
+         aria-label="${esc(a.name)}: ${esc(a.desc)}">
+        ${esc(a.name)}
+      </button>`
+    ).join("");
+    return `<div class="blk"><div class="lb">Heroic Actions</div>
+      <div class="ha-chips">${chips}</div></div>`;
+  }
+
   function openProfileCard(r){
     const d = r.def, s = d.stats;
     const k  = ["mv","fv","sv","s","d","a","w","c","i"];
@@ -232,7 +246,7 @@
       ${d.wargear ? `<div class="blk"><div class="lb">Wargear</div><p>${esc(d.wargear)}</p></div>` : ""}
       ${options}
       ${mountBlocks}
-      ${block("Heroic Actions", d.heroic)}
+      ${heroicBlock(d.heroic)}
       ${block("Special Rules", d.rules)}
       ${d.flavor ? `<div class="flavor">“${esc(d.flavor)}”</div>` : ""}
     `;
@@ -300,6 +314,100 @@
     });
     document.addEventListener("keydown", e => {
       if(e.key === "Escape" && !$("#cardBackdrop").hidden) closeProfileCard();
+    });
+
+    /* --- Heroic action chip tooltip --- */
+    /* Create the singleton tooltip element once */
+    let haTooltip = document.getElementById("ha-tooltip");
+    if(!haTooltip){
+      haTooltip = document.createElement("div");
+      haTooltip.id = "ha-tooltip";
+      haTooltip.setAttribute("role","tooltip");
+      haTooltip.setAttribute("hidden","");
+      haTooltip.innerHTML = '<div class="tt-name"></div><p class="tt-desc"></p>';
+      document.body.appendChild(haTooltip);
+    }
+    const ttName = haTooltip.querySelector(".tt-name");
+    const ttDesc = haTooltip.querySelector(".tt-desc");
+
+    const isTouch = () => window.matchMedia("(pointer:coarse)").matches || "ontouchstart" in window;
+
+    function positionTooltip(chip){
+      const r   = chip.getBoundingClientRect();
+      const vw  = window.innerWidth;
+      const vh  = window.innerHeight;
+      const ttW = Math.min(320, vw - 32);
+      haTooltip.style.maxWidth = ttW + "px";
+
+      /* Prefer below the chip; fall back to above */
+      let top  = r.bottom + 8;
+      let left = r.left;
+      if(top + 140 > vh) top = r.top - 140 - 8;  /* rough height estimate */
+      if(left + ttW > vw - 12) left = vw - ttW - 12;
+      if(left < 12) left = 12;
+
+      haTooltip.style.top  = top  + "px";
+      haTooltip.style.left = left + "px";
+    }
+
+    function showTooltip(chip){
+      ttName.textContent = chip.dataset.name;
+      ttDesc.textContent = chip.dataset.desc;
+      haTooltip.removeAttribute("hidden");
+      positionTooltip(chip);
+    }
+    function hideTooltip(){
+      haTooltip.setAttribute("hidden","");
+      document.querySelectorAll(".ha-chip.is-open").forEach(c => c.classList.remove("is-open"));
+    }
+
+    /* Desktop: hover */
+    document.addEventListener("mouseover", e => {
+      if(isTouch()) return;
+      const chip = e.target.closest(".ha-chip");
+      if(chip){ showTooltip(chip); return; }
+      if(!haTooltip.contains(e.target)) hideTooltip();
+    });
+    document.addEventListener("mouseout", e => {
+      if(isTouch()) return;
+      if(!e.target.closest(".ha-chip") && !haTooltip.contains(e.relatedTarget)){
+        hideTooltip();
+      }
+    });
+
+    /* Mobile: tap toggle */
+    document.addEventListener("click", e => {
+      if(!isTouch()) return;
+      const chip = e.target.closest(".ha-chip");
+      if(chip){
+        const alreadyOpen = chip.classList.contains("is-open");
+        hideTooltip();
+        if(!alreadyOpen){
+          chip.classList.add("is-open");
+          showTooltip(chip);
+        }
+        e.stopPropagation();
+        return;
+      }
+      hideTooltip();
+    });
+
+    /* Keyboard: Enter/Space on chip */
+    document.addEventListener("keydown", e => {
+      if((e.key === "Enter" || e.key === " ") && e.target.closest(".ha-chip")){
+        e.preventDefault();
+        const chip = e.target.closest(".ha-chip");
+        const alreadyOpen = chip.classList.contains("is-open");
+        hideTooltip();
+        if(!alreadyOpen){ chip.classList.add("is-open"); showTooltip(chip); }
+      }
+      if(e.key === "Escape") hideTooltip();
+    });
+
+    /* Hide tooltip when the profile card closes */
+    $("#cardClose").addEventListener("click", hideTooltip);
+    $("#cardBackdrop").addEventListener("click", e => {
+      if(e.target === $("#cardBackdrop")) hideTooltip();
     });
   }
 

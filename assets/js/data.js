@@ -60,7 +60,7 @@ bolton:{
         {name:"Heroic March", desc:"A Hero who declares a Heroic March adds 3\" to their Move Value (5\" for Cavalry or models that can Fly) for the duration of the Move Phase, and may not Charge that Move Phase. They may shout At the Double to extend the benefit to friendly models within 6\"."},
         {name:"Heroic Defence", desc:"A Hero that declares a Heroic Defence will only suffer a Wound on the roll of a natural 6 in the ensuing Fight Phase, regardless of any special rules, modifiers, Brutal Power Attacks or the use of Might."},
         {name:"Heroic Strike", desc:"A Hero that declares a Heroic Strike will add D3 to their Fight Value for the duration of the Fight Phase (to a maximum of 10)."},
-        {name:"Heroic Challenge", desc:"See the MESBG Rules Manual 2024."}
+        {name:"Heroic Challenge", desc:"Declare an enemy Hero within 6\" of the same Heroic Tier or higher as the target. Whilst Engaged with the target, the Hero gains +1 Attack and +1 To Wound against them. If the target is slain, the Hero immediately gains 1 Might Point. The target may accept (gaining the same bonuses) or decline (forfeiting them)."}
       ],
       options:[
         {id:"arco", name:"Short bow", cost:5, bow:true},
@@ -150,7 +150,7 @@ horda:{
       heroic:[
         {name:"Heroic Strike", desc:"A Hero that declares a Heroic Strike will add D3 to their Fight Value for the duration of the Fight Phase (to a maximum of 10)."},
         {name:"Heroic Strength", desc:"A Hero that declares a Heroic Strength will count their Strength characteristic as double (to a maximum of 10) when making Strikes until the End Phase of the turn."},
-        {name:"Heroic Challenge", desc:"See the MESBG Rules Manual 2024."}
+        {name:"Heroic Challenge", desc:"Declare an enemy Hero within 6\" of the same Heroic Tier or higher as the target. Whilst Engaged with the target, the Hero gains +1 Attack and +1 To Wound against them. If the target is slain, the Hero immediately gains 1 Might Point. The target may accept (gaining the same bonuses) or decline (forfeiting them)."}
       ],
       options:[
         // TODO: the shield cancels the two-handed axe bonus. The pilot does not
@@ -381,11 +381,11 @@ FACTIONS.isengard={
       heroic:[
         {
           name:"Heroic Channelling",
-          desc:"See the MESBG Rules Manual 2024."
+          desc:"The Hero will count the result of their next Casting Test this turn as a 6 — no dice rolled, but they still spend a Will Point to Cast as normal."
         },
         {
           name:"Heroic Defence",
-          desc:"See the MESBG Rules Manual 2024."
+          desc:"The Hero will only suffer a Wound on the roll of a natural 6 in the ensuing Fight Phase, regardless of any special rules, modifiers, Brutal Power Attacks or the use of Might. Does not confer to the Hero's Mount."
         }
       ],
       options:[
@@ -473,19 +473,19 @@ FACTIONS.isengard={
       heroic:[
         {
           name:"Heroic Challenge",
-          desc:"See the MESBG Rules Manual 2024."
+          desc:"Declare an enemy Hero within 6\" of the same Heroic Tier or higher as the target. Whilst Engaged with the target, the Hero gains +1 Attack and +1 To Wound against them. If the target is slain, the Hero immediately gains 1 Might Point. The target may accept (gaining the same bonuses) or decline (forfeiting them)."
         },
         {
           name:"Heroic March",
-          desc:"See the MESBG Rules Manual 2024."
+          desc:"The Hero adds 3\" to their Move Value for the Move Phase (5\" for Cavalry or models with the Fly special rule) and may not Charge that turn. May shout \"At the Double\": friendly models within 6\" gain the same Move bonus but also cannot Charge and must finish within 6\" of the Hero."
         },
         {
           name:"Heroic Strength",
-          desc:"See the MESBG Rules Manual 2024."
+          desc:"The Hero counts their Strength characteristic as double (to a maximum of 10) when making Strikes until the End Phase of the turn."
         },
         {
           name:"Heroic Strike",
-          desc:"See the MESBG Rules Manual 2024."
+          desc:"The Hero adds D3 to their Fight Value for the duration of the Fight Phase (to a maximum of 10). The D3 is rolled at the start of the first Combat the Hero is involved in that Fight Phase."
         }
       ],
       options:[
@@ -541,15 +541,15 @@ FACTIONS.isengard={
       heroic:[
         {
           name:"Heroic March",
-          desc:"See the MESBG Rules Manual 2024."
+          desc:"The Hero adds 3\" to their Move Value for the Move Phase (5\" for Cavalry or models with the Fly special rule) and may not Charge that turn. May shout \"At the Double\": friendly models within 6\" gain the same Move bonus but also cannot Charge and must finish within 6\" of the Hero."
         },
         {
           name:"Heroic Strength",
-          desc:"See the MESBG Rules Manual 2024."
+          desc:"The Hero counts their Strength characteristic as double (to a maximum of 10) when making Strikes until the End Phase of the turn."
         },
         {
           name:"Heroic Strike",
-          desc:"See the MESBG Rules Manual 2024."
+          desc:"The Hero adds D3 to their Fight Value for the duration of the Fight Phase (to a maximum of 10). The D3 is rolled at the start of the first Combat the Hero is involved in that Fight Phase."
         }
       ],
       options:[],
@@ -591,7 +591,7 @@ FACTIONS.isengard={
       heroic:[
         {
           name:"Heroic Strike",
-          desc:"See the MESBG Rules Manual 2024."
+          desc:"The Hero adds D3 to their Fight Value for the duration of the Fight Phase (to a maximum of 10). The D3 is rolled at the start of the first Combat the Hero is involved in that Fight Phase."
         }
       ],
       options:[],
@@ -632,7 +632,7 @@ FACTIONS.isengard={
       heroic:[
         {
           name:"Heroic Challenge",
-          desc:"See the MESBG Rules Manual 2024."
+          desc:"Declare an enemy Hero within 6\" of the same Heroic Tier or higher as the target. Whilst Engaged with the target, the Hero gains +1 Attack and +1 To Wound against them. If the target is slain, the Hero immediately gains 1 Might Point. The target may accept (gaining the same bonuses) or decline (forfeiting them)."
         }
       ],
       options:[],
@@ -668,7 +668,7 @@ FACTIONS.isengard={
       heroic:[
         {
           name:"Heroic March",
-          desc:"See the MESBG Rules Manual 2024."
+          desc:"The Hero adds 3\" to their Move Value for the Move Phase (5\" for Cavalry or models with the Fly special rule) and may not Charge that turn. May shout \"At the Double\": friendly models within 6\" gain the same Move bonus but also cannot Charge and must finish within 6\" of the Hero."
         }
       ],
       options:[],
@@ -725,7 +725,7 @@ FACTIONS.isengard={
       heroic:[
         {
           name:"Heroic March",
-          desc:"See the MESBG Rules Manual 2024."
+          desc:"The Hero adds 3\" to their Move Value for the Move Phase (5\" for Cavalry or models with the Fly special rule) and may not Charge that turn. May shout \"At the Double\": friendly models within 6\" gain the same Move bonus but also cannot Charge and must finish within 6\" of the Hero."
         }
       ],
       options:[],
@@ -762,11 +762,11 @@ FACTIONS.isengard={
       heroic:[
         {
           name:"Heroic March",
-          desc:"See the MESBG Rules Manual 2024."
+          desc:"The Hero adds 3\" to their Move Value for the Move Phase (5\" for Cavalry or models with the Fly special rule) and may not Charge that turn. May shout \"At the Double\": friendly models within 6\" gain the same Move bonus but also cannot Charge and must finish within 6\" of the Hero."
         },
         {
           name:"Heroic Strike",
-          desc:"See the MESBG Rules Manual 2024."
+          desc:"The Hero adds D3 to their Fight Value for the duration of the Fight Phase (to a maximum of 10). The D3 is rolled at the start of the first Combat the Hero is involved in that Fight Phase."
         }
       ],
       options:[],
@@ -810,7 +810,7 @@ FACTIONS.isengard={
       heroic:[
         {
           name:"Heroic March",
-          desc:"See the MESBG Rules Manual 2024."
+          desc:"The Hero adds 3\" to their Move Value for the Move Phase (5\" for Cavalry or models with the Fly special rule) and may not Charge that turn. May shout \"At the Double\": friendly models within 6\" gain the same Move bonus but also cannot Charge and must finish within 6\" of the Hero."
         }
       ],
       options:[
@@ -849,7 +849,7 @@ FACTIONS.isengard={
       heroic:[
         {
           name:"Heroic Strength",
-          desc:"See the MESBG Rules Manual 2024."
+          desc:"The Hero counts their Strength characteristic as double (to a maximum of 10) when making Strikes until the End Phase of the turn."
         }
       ],
       options:[],
@@ -897,7 +897,7 @@ FACTIONS.isengard={
       heroic:[
         {
           name:"Heroic March",
-          desc:"See the MESBG Rules Manual 2024."
+          desc:"The Hero adds 3\" to their Move Value for the Move Phase (5\" for Cavalry or models with the Fly special rule) and may not Charge that turn. May shout \"At the Double\": friendly models within 6\" gain the same Move bonus but also cannot Charge and must finish within 6\" of the Hero."
         }
       ],
       options:[
@@ -1310,27 +1310,27 @@ FACTIONS.gondor={
       heroic:[
         {
           name:"Heroic Challenge",
-          desc:"See the MESBG Rules Manual 2024."
+          desc:"Declare an enemy Hero within 6\" of the same Heroic Tier or higher as the target. Whilst Engaged with the target, the Hero gains +1 Attack and +1 To Wound against them. If the target is slain, the Hero immediately gains 1 Might Point. The target may accept (gaining the same bonuses) or decline (forfeiting them)."
         },
         {
           name:"Heroic Defence",
-          desc:"See the MESBG Rules Manual 2024."
+          desc:"The Hero will only suffer a Wound on the roll of a natural 6 in the ensuing Fight Phase, regardless of any special rules, modifiers, Brutal Power Attacks or the use of Might. Does not confer to the Hero's Mount."
         },
         {
           name:"Heroic March",
-          desc:"See the MESBG Rules Manual 2024."
+          desc:"The Hero adds 3\" to their Move Value for the Move Phase (5\" for Cavalry or models with the Fly special rule) and may not Charge that turn. May shout \"At the Double\": friendly models within 6\" gain the same Move bonus but also cannot Charge and must finish within 6\" of the Hero."
         },
         {
           name:"Heroic Resolve",
-          desc:"See the MESBG Rules Manual 2024."
+          desc:"Friendly models within 6\" gain an additional free dice when making Resist Tests until the End Phase. Additionally, the Hero automatically passes Courage Tests caused by their Army being Broken that turn."
         },
         {
           name:"Heroic Strength",
-          desc:"See the MESBG Rules Manual 2024."
+          desc:"The Hero counts their Strength characteristic as double (to a maximum of 10) when making Strikes until the End Phase of the turn."
         },
         {
           name:"Heroic Strike",
-          desc:"See the MESBG Rules Manual 2024."
+          desc:"The Hero adds D3 to their Fight Value for the duration of the Fight Phase (to a maximum of 10). The D3 is rolled at the start of the first Combat the Hero is involved in that Fight Phase."
         }
       ],
       options:[
@@ -1394,7 +1394,7 @@ FACTIONS.gondor={
       heroic:[
         {
           name:"Heroic Defence",
-          desc:"See the MESBG Rules Manual 2024."
+          desc:"The Hero will only suffer a Wound on the roll of a natural 6 in the ensuing Fight Phase, regardless of any special rules, modifiers, Brutal Power Attacks or the use of Might. Does not confer to the Hero's Mount."
         }
       ],
       options:[],
@@ -1439,15 +1439,15 @@ FACTIONS.gondor={
       heroic:[
         {
           name:"Heroic Challenge",
-          desc:"See the MESBG Rules Manual 2024."
+          desc:"Declare an enemy Hero within 6\" of the same Heroic Tier or higher as the target. Whilst Engaged with the target, the Hero gains +1 Attack and +1 To Wound against them. If the target is slain, the Hero immediately gains 1 Might Point. The target may accept (gaining the same bonuses) or decline (forfeiting them)."
         },
         {
           name:"Heroic Strength",
-          desc:"See the MESBG Rules Manual 2024."
+          desc:"The Hero counts their Strength characteristic as double (to a maximum of 10) when making Strikes until the End Phase of the turn."
         },
         {
           name:"Heroic Strike",
-          desc:"See the MESBG Rules Manual 2024."
+          desc:"The Hero adds D3 to their Fight Value for the duration of the Fight Phase (to a maximum of 10). The D3 is rolled at the start of the first Combat the Hero is involved in that Fight Phase."
         }
       ],
       options:[
@@ -1519,19 +1519,19 @@ FACTIONS.gondor={
       heroic:[
         {
           name:"Heroic Accuracy",
-          desc:"See the MESBG Rules Manual 2024."
+          desc:"The Hero gains the Sharpshooter special rule until the End Phase and may re-roll any failed In The Way Tests when making Shooting Attacks. May shout \"Take Aim\": friendly models within 6\" may also re-roll failed In The Way Tests when Shooting."
         },
         {
           name:"Heroic Defence",
-          desc:"See the MESBG Rules Manual 2024."
+          desc:"The Hero will only suffer a Wound on the roll of a natural 6 in the ensuing Fight Phase, regardless of any special rules, modifiers, Brutal Power Attacks or the use of Might. Does not confer to the Hero's Mount."
         },
         {
           name:"Heroic Resolve",
-          desc:"See the MESBG Rules Manual 2024."
+          desc:"Friendly models within 6\" gain an additional free dice when making Resist Tests until the End Phase. Additionally, the Hero automatically passes Courage Tests caused by their Army being Broken that turn."
         },
         {
           name:"Heroic Strike",
-          desc:"See the MESBG Rules Manual 2024."
+          desc:"The Hero adds D3 to their Fight Value for the duration of the Fight Phase (to a maximum of 10). The D3 is rolled at the start of the first Combat the Hero is involved in that Fight Phase."
         }
       ],
       options:[
@@ -1608,19 +1608,19 @@ FACTIONS.gondor={
       heroic:[
         {
           name:"Heroic Channelling",
-          desc:"See the MESBG Rules Manual 2024."
+          desc:"The Hero will count the result of their next Casting Test this turn as a 6 — no dice rolled, but they still spend a Will Point to Cast as normal."
         },
         {
           name:"Heroic Defence",
-          desc:"See the MESBG Rules Manual 2024."
+          desc:"The Hero will only suffer a Wound on the roll of a natural 6 in the ensuing Fight Phase, regardless of any special rules, modifiers, Brutal Power Attacks or the use of Might. Does not confer to the Hero's Mount."
         },
         {
           name:"Heroic Resolve",
-          desc:"See the MESBG Rules Manual 2024."
+          desc:"Friendly models within 6\" gain an additional free dice when making Resist Tests until the End Phase. Additionally, the Hero automatically passes Courage Tests caused by their Army being Broken that turn."
         },
         {
           name:"Heroic Strike",
-          desc:"See the MESBG Rules Manual 2024."
+          desc:"The Hero adds D3 to their Fight Value for the duration of the Fight Phase (to a maximum of 10). The D3 is rolled at the start of the first Combat the Hero is involved in that Fight Phase."
         }
       ],
       options:[
@@ -1682,7 +1682,7 @@ FACTIONS.gondor={
       heroic:[
         {
           name:"Heroic Defence",
-          desc:"See the MESBG Rules Manual 2024."
+          desc:"The Hero will only suffer a Wound on the roll of a natural 6 in the ensuing Fight Phase, regardless of any special rules, modifiers, Brutal Power Attacks or the use of Might. Does not confer to the Hero's Mount."
         }
       ],
       options:[
@@ -1729,7 +1729,7 @@ FACTIONS.gondor={
       heroic:[
         {
           name:"Heroic Defence",
-          desc:"See the MESBG Rules Manual 2024."
+          desc:"The Hero will only suffer a Wound on the roll of a natural 6 in the ensuing Fight Phase, regardless of any special rules, modifiers, Brutal Power Attacks or the use of Might. Does not confer to the Hero's Mount."
         }
       ],
       options:[],
@@ -1778,11 +1778,11 @@ FACTIONS.gondor={
       heroic:[
         {
           name:"Heroic Accuracy",
-          desc:"See the MESBG Rules Manual 2024."
+          desc:"The Hero gains the Sharpshooter special rule until the End Phase and may re-roll any failed In The Way Tests when making Shooting Attacks. May shout \"Take Aim\": friendly models within 6\" may also re-roll failed In The Way Tests when Shooting."
         },
         {
           name:"Heroic March",
-          desc:"See the MESBG Rules Manual 2024."
+          desc:"The Hero adds 3\" to their Move Value for the Move Phase (5\" for Cavalry or models with the Fly special rule) and may not Charge that turn. May shout \"At the Double\": friendly models within 6\" gain the same Move bonus but also cannot Charge and must finish within 6\" of the Hero."
         }
       ],
       options:[],
@@ -1823,7 +1823,7 @@ FACTIONS.gondor={
       heroic:[
         {
           name:"Heroic Accuracy",
-          desc:"See the MESBG Rules Manual 2024."
+          desc:"The Hero gains the Sharpshooter special rule until the End Phase and may re-roll any failed In The Way Tests when making Shooting Attacks. May shout \"Take Aim\": friendly models within 6\" may also re-roll failed In The Way Tests when Shooting."
         }
       ],
       options:[],
@@ -1863,7 +1863,7 @@ FACTIONS.gondor={
       heroic:[
         {
           name:"Heroic March",
-          desc:"See the MESBG Rules Manual 2024."
+          desc:"The Hero adds 3\" to their Move Value for the Move Phase (5\" for Cavalry or models with the Fly special rule) and may not Charge that turn. May shout \"At the Double\": friendly models within 6\" gain the same Move bonus but also cannot Charge and must finish within 6\" of the Hero."
         }
       ],
       options:[],
@@ -2174,15 +2174,15 @@ FACTIONS.numenor={
       heroic:[
         {
           name:"Heroic Challenge",
-          desc:"See the MESBG Rules Manual 2024."
+          desc:"Declare an enemy Hero within 6\" of the same Heroic Tier or higher as the target. Whilst Engaged with the target, the Hero gains +1 Attack and +1 To Wound against them. If the target is slain, the Hero immediately gains 1 Might Point. The target may accept (gaining the same bonuses) or decline (forfeiting them)."
         },
         {
           name:"Heroic Strength",
-          desc:"See the MESBG Rules Manual 2024."
+          desc:"The Hero counts their Strength characteristic as double (to a maximum of 10) when making Strikes until the End Phase of the turn."
         },
         {
           name:"Heroic Strike",
-          desc:"See the MESBG Rules Manual 2024."
+          desc:"The Hero adds D3 to their Fight Value for the duration of the Fight Phase (to a maximum of 10). The D3 is rolled at the start of the first Combat the Hero is involved in that Fight Phase."
         }
       ],
       options:[],
@@ -2227,15 +2227,15 @@ FACTIONS.numenor={
       heroic:[
         {
           name:"Heroic Challenge",
-          desc:"See the MESBG Rules Manual 2024."
+          desc:"Declare an enemy Hero within 6\" of the same Heroic Tier or higher as the target. Whilst Engaged with the target, the Hero gains +1 Attack and +1 To Wound against them. If the target is slain, the Hero immediately gains 1 Might Point. The target may accept (gaining the same bonuses) or decline (forfeiting them)."
         },
         {
           name:"Heroic Strength",
-          desc:"See the MESBG Rules Manual 2024."
+          desc:"The Hero counts their Strength characteristic as double (to a maximum of 10) when making Strikes until the End Phase of the turn."
         },
         {
           name:"Heroic Strike",
-          desc:"See the MESBG Rules Manual 2024."
+          desc:"The Hero adds D3 to their Fight Value for the duration of the Fight Phase (to a maximum of 10). The D3 is rolled at the start of the first Combat the Hero is involved in that Fight Phase."
         }
       ],
       options:[
@@ -2287,7 +2287,7 @@ FACTIONS.numenor={
       heroic:[
         {
           name:"Heroic March",
-          desc:"See the MESBG Rules Manual 2024."
+          desc:"The Hero adds 3\" to their Move Value for the Move Phase (5\" for Cavalry or models with the Fly special rule) and may not Charge that turn. May shout \"At the Double\": friendly models within 6\" gain the same Move bonus but also cannot Charge and must finish within 6\" of the Hero."
         }
       ],
       options:[],
@@ -2377,11 +2377,11 @@ FACTIONS.dunharrow={
       heroic:[
         {
           name:"Heroic March",
-          desc:"See the MESBG Rules Manual 2024."
+          desc:"The Hero adds 3\" to their Move Value for the Move Phase (5\" for Cavalry or models with the Fly special rule) and may not Charge that turn. May shout \"At the Double\": friendly models within 6\" gain the same Move bonus but also cannot Charge and must finish within 6\" of the Hero."
         },
         {
           name:"Heroic Strike",
-          desc:"See the MESBG Rules Manual 2024."
+          desc:"The Hero adds D3 to their Fight Value for the duration of the Fight Phase (to a maximum of 10). The D3 is rolled at the start of the first Combat the Hero is involved in that Fight Phase."
         }
       ],
       options:[],
